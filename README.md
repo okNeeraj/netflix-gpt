@@ -1,6 +1,6 @@
 # Netflix GPT
 
-- Movies recomandation with AI.
+Movies recomandation with AI.
 
 ## Setup
 
@@ -19,12 +19,7 @@ npx tailwindcss init
 
 - Configure tailwind css in your project
 
-```js
-npm install -D tailwindcss
-npx tailwindcss init
-```
-
-- `npx tailwindcss init` command will create a file `tailwind.config.js` in your project's root directory.
+  `npx tailwindcss init` command will create a file `tailwind.config.js` in your project's root directory.
   Open `tailwind.config.js` and replace all content with below code.
 
 ```js
@@ -46,7 +41,7 @@ module.exports = {
 @tailwind utilities;
 ```
 
-- Now you create a react app with tailwind css successfully. Now run the below command on your terminal to start your local development server.
+- Now you created a react app with tailwind css successfully. Now run the below command on your terminal to start your local development server.
 
 ```js
 npm start
