@@ -4,7 +4,7 @@
 
 ## Setup
 
-- Insall react app using create-react-app (CRA)
+- Install react app using create-react-app (CRA)
 
 ```js
 npx create-react-app netflix-gpt
