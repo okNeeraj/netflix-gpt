@@ -46,3 +46,23 @@ module.exports = {
 ```js
 npm start
 ```
+
+## Features
+
+- Home Page (is user !authorised)
+
+  - Signin/Signup Page
+    - SignInForm / SignUpForm
+
+- Browse Page
+
+  - Navbar
+  - Showcase
+  - Showcase
+  - Trendings
+  - MoviesSuggestion
+    - MoviesList \* N
+
+- NetflixGPT
+  - Search
+  - MoviesSuggestion
