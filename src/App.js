@@ -1,8 +1,16 @@
+import { RouterProvider } from 'react-router-dom';
+import appRouter from './routes/appRouter';
 import './App.css';
+import Layout from './layout/Layout';
+
 
 const App = () => {
   return (
-    <h1 className="text-4xl text-center my-10">Netfix GPT 🔥</h1>
+    <>
+      <Layout>
+        <RouterProvider router={appRouter} />
+      </Layout>
+    </>
   )
 }
 
