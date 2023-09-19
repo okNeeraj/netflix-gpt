@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import LOGO_RED from '../assets/ngpt-red-300x71.png';
-import LOGO_WHITE from '../assets/ngpt-white-300x71.png';
+import { LOGO_RED } from '../utils/constants';
 
 const Navbar = () => {
   return (
