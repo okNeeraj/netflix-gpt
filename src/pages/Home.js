@@ -1,6 +1,8 @@
 const Home = () => {
   return (
-    <h1>Home Page</h1>
+    <div className="bf">
+      <h1>The biggest Indian hits. Ready to watch here from ₹ 149.</h1>
+    </div>
   )
 }
 
