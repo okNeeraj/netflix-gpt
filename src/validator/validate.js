@@ -2,21 +2,28 @@ const validate = (emailPhone, password, confirmPassword) => {
   const errors = {};
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const phoneRegex = /^[0-9]{10}$/; // Example: 10-digit phone number, modify as needed
+  const phoneRegex = /^[0-9]{10}$/;
 
   if (!emailRegex.test(emailPhone) && !phoneRegex.test(emailPhone)) {
     errors.emailPhone = 'Please enter a valid email address or phone number.';
   }
 
-  const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(password);
-  if (!isPasswordValid) {
-    errors.password = 'Your password must contain between 4 and 60 characters.';
+  if (!password) {
+    errors.password = 'Password password cannot be empty.';
+  } else {
+    if (password.length < 8 || password.length > 16) {
+      errors.password = 'Password must be between 8 and 16 characters.';
+    }
+    if (!/(?=.*[a-z])/.test(password)) {
+      errors.password = 'Password must contain at least one lowercase letter.';
+    }
+    if (!/(?=.*[A-Z])/.test(password)) {
+      errors.password = 'Password must contain at least one uppercase letter.';
+    }
+    if (!/(?=.*\d)/.test(password)) {
+      errors.password = 'Password must contain at least one digit.';
+    }
   }
-
-  // if (confirmPassword !== undefined && confirmPassword.trim() !== '') {
-  //   if (confirmPassword !== password) {
-  //     errors.confirmPassword = 'Passwords do not match.';
-  //   }
 
   if (confirmPassword !== undefined) {
     const trimmedConfirmPassword = confirmPassword.trim();

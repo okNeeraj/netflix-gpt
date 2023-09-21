@@ -9,7 +9,10 @@ const SignInform = () => {
   const password = useRef(null);
 
   const handleSignIn = () => {
-    const isValid = validate(emailPhone.current.value, password.current.value);
+    const isValid = validate(
+      emailPhone.current.value,
+      password.current.value
+    );
     setErrorMessage(isValid);
     if (isValid === true) {
       console.log('login success')
