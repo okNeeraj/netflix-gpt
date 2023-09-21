@@ -22,16 +22,16 @@ const SignUpForm = () => {
     <div className='bg-black/70 w-full sm:w-[450px] m-auto px-6 md:px-16 py-8 md:py-12 mx-4 sm:mx-auto flex items-center rounded-lg'>
       <div className="w-full">
         <h1 className="mb-5 text-white text-3xl">Sign Up</h1>
-        <div className="mb-4 text-white">
-          <input type="text" ref={emailPhone} placeholder="Email or Phone Number" className="px-4 py-4 w-full bg-[#333] rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm" />
+        <div className="mb-2 text-white">
+          <input type="text" ref={emailPhone} placeholder="Email or Phone Number" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.emailPhone}</div>
         </div>
-        <div className="mb-4 text-white">
-          <input type="password" ref={password} placeholder="Set Password" className="px-4 py-4 w-full bg-[#333] rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm" />
+        <div className="mb-2 text-white">
+          <input type="text" ref={password} placeholder="Email or Phone Number" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.password}</div>
         </div>
         <div className="mb-2 text-white">
-          <input type="password" ref={confirmPassword} placeholder="Confirm Password" className="px-4 py-4 w-full bg-[#333] rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm" />
+          <input type="text" ref={confirmPassword} placeholder="Email or Phone Number" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.confirmPassword}</div>
         </div>
         <div className="my-2">
