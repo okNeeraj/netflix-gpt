@@ -1,16 +1,10 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import { useState } from "react";
+import DefaultLayout from "./DefaultLayout";
+import AppLayout from "./AppLayout";
 
 const Layout = ({ children }) => {
-  return (
-    <>
-      <Navbar />
-      <main className="page-body h-screen text-gray-400">
-        {children}
-      </main>
-      <Footer />
-    </>
-  )
+  const [isAuth, setIsAuth] = useState(false);
+  return isAuth ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
 
 export default Layout;
