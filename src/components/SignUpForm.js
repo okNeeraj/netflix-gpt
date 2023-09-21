@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import register from "../auth/register";
 import { PAGE } from "../router/routes";
 import validate from "../validator/validate";
 
@@ -10,17 +11,14 @@ const SignUpForm = () => {
   const confirmPassword = useRef(null);
 
   const handleSignUp = () => {
-    const isValid = validate(
+    const isError = validate(
       emailPhone.current.value,
       password.current.value,
       confirmPassword.current.value
     );
-    setErrorMessage(isValid);
-    if (isValid === true) {
-      console.log('signup success');
-      console.log(emailPhone.current.value)
-      console.log(password.current.value)
-    }
+    setErrorMessage(isError);
+    if (isError) return;
+    register(emailPhone.current.value, password.current.value);
   }
 
   return (

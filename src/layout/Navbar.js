@@ -1,10 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LOGO_RED } from '../utils/constants';
 import { PAGE } from '../router/routes';
+import { signOut } from 'firebase/auth';
+import { auth } from '../services/firebase';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      navigate('/')
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
   return (
-    <div className="px-4 py-2 flex items-center bg-slate-900 text-white">
+    <div className="px-4 py-3 flex items-center bg-black text-white">
       <div className='ff'>
         <div className="w-48">
           <img src={LOGO_RED} alt='logo' />
@@ -15,7 +26,8 @@ const Navbar = () => {
         <Link to={PAGE.BROWSE} className='hover:text-gray-50'>Browse</Link>
       </div>
       <div className="ml-auto">
-        <Link to={PAGE.SIGNIN}>Sign In</Link>
+        Neeraj
+        <button className='p-3' onClick={handleSignOut}>Sign Out</button>
       </div>
     </div>
   )
