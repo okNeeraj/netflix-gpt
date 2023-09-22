@@ -34,7 +34,7 @@ const validate = (emailPhone, password, confirmPassword) => {
     }
   }
 
-  return Object.keys(errors).length === 0 ? true : errors;
+  return Object.keys(errors).length === 0 ? null : errors;
 }
 
 export default validate;

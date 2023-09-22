@@ -1,30 +1,53 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import validate from "../validator/validate";
 import { PAGE } from "../router/routes";
 import { useRef, useState } from "react";
+import authenticate from "../auth/authenticate";
+import { useDispatch } from "react-redux";
+import { addUser } from "../stores/userSlice";
 
 const SignInform = () => {
+  const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
+
   const emailPhone = useRef(null);
   const password = useRef(null);
 
-  const handleSignIn = () => {
-    const isValid = validate(
+  const navigate = useNavigate();
+
+  const handleSignIn = async () => {
+    // Client side validation
+    const isError = validate(
       emailPhone.current.value,
       password.current.value
     );
-    setErrorMessage(isValid);
-    if (isValid === true) {
-      console.log('login success')
-      console.log(emailPhone.current.value)
-      console.log(password.current.value)
-    }
+    setErrorMessage(isError);
+    if (isError) return;
+
+    // Send provided credential to server for validation
+    const userCredential = await authenticate(emailPhone.current.value, password.current.value);
+    setAuthError(userCredential?.error?.message);
+    if (userCredential?.error) return;
+
+    const { uid, displayName, email, photoURL, phoneNumber } = userCredential.user;
+    dispatch(addUser({
+      uid: uid,
+      displayName: displayName,
+      photoURL: photoURL,
+      email: email,
+      phoneNumber: phoneNumber
+    }));
+    navigate(PAGE.BROWSE)
   }
 
   return (
     <div className='bg-black/70 w-full sm:w-[450px] m-auto px-6 md:px-16 py-8 md:py-12 mx-4 sm:mx-auto flex items-center rounded-lg'>
       <div className="w-full">
         <h1 className="mb-5 text-white text-3xl">Sign In</h1>
+        {authError && (
+          <div className="p-3 bg-[#e87c03] text-white text-xs rounded-md mb-5">{authError}</div>
+        )}
         <div className="mb-2 text-white">
           <input type="text" ref={emailPhone} placeholder="Email or Phone Number" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.emailPhone}</div>

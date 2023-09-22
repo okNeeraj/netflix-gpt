@@ -5,7 +5,7 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="page-body h-screen text-gray-500">
+      <main className="page-body h-screen text-gray-500 pt-[70px]">
         {children}
       </main>
       <Footer />
