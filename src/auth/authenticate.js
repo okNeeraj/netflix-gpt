@@ -2,16 +2,16 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 
 const authenticate = async (email, password) => {
+  const response = {};
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     console.log(user)
-    return null
+    response.user = user;
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    return errorMessage;
+    response.error = error;
   }
+  return response;
 }
 
 export default authenticate;

@@ -3,4 +3,5 @@ export const PAGE = {
   BROWSE: '/browse',
   SIGNIN: '/login',
   SIGNUP: '/signup',
+  PROFILE: '/profile',
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import DefaultLayout from "./DefaultLayout";
 import AppLayout from "./AppLayout";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../services/firebase";
@@ -10,28 +10,36 @@ import { addUser } from "../stores/userSlice";
 
 const Layout = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
+  const [isLogged, setIsLogged] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const loggedUser = useSelector(store => store.user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuth(true)
-        const { uid, displayName, email } = user;
+        const { uid, displayName, email, photoURL, phoneNumber } = user;
         console.log(email)
         // dispatch(addUser(['hello', 'neeraj']))
         dispatch(addUser({
-          uid: 'uid',
-          displayName: 'displayName',
-          email: 'email',
+          uid: uid,
+          displayName: displayName,
+          photoURL: photoURL,
+          email: email,
         }))
       } else {
         console.log('Signed Out')
       }
     });
-  }, [])
+    return unsubscribe;
+  }, []);
 
-  return isAuth ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
+  useEffect(() => {
+    setIsLogged(loggedUser)
+  }, [loggedUser, isLogged])
+
+  return isLogged ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
 
 export default Layout;
