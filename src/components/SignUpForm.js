@@ -1,12 +1,10 @@
 import { useState, useRef } from "react";
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import register from "../auth/register";
 import { PAGE } from "../router/routes";
 import validate from "../validator/validate";
 import { addUser } from "../stores/userSlice";
-import { AVATAR_RED } from "../utils/constants";
-import { auth } from "../services/firebase";
 
 const SignUpForm = () => {
   const [authError, setAuthError] = useState(null);
@@ -15,7 +13,6 @@ const SignUpForm = () => {
   const emailPhone = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
-  const navigate = useNavigate();
 
   const handleSignUp = async () => {
     // Client side validation
@@ -40,7 +37,6 @@ const SignUpForm = () => {
       email: email,
       phoneNumber: phoneNumber
     }));
-    navigate(PAGE.PROFILE)
   }
 
   return (
