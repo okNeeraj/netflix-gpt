@@ -1,21 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import validate from "../validator/validate";
 import { PAGE } from "../router/routes";
 import { useRef, useState } from "react";
 import authenticate from "../auth/authenticate";
-import { useDispatch } from "react-redux";
-import { addUser } from "../stores/userSlice";
-import { auth } from "../services/firebase";
 
 const SignInform = () => {
   const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const dispatch = useDispatch();
-
   const emailPhone = useRef(null);
   const password = useRef(null);
-
-  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     // Client side validation
@@ -30,16 +23,6 @@ const SignInform = () => {
     const userCredential = await authenticate(emailPhone.current.value, password.current.value);
     setAuthError(userCredential?.error?.message);
     if (userCredential?.error) return;
-
-    // const { uid, displayName, email, photoURL, phoneNumber } = auth.currentUser;
-    // dispatch(addUser({
-    //   uid: uid,
-    //   displayName: displayName,
-    //   photoURL: photoURL,
-    //   email: email,
-    //   phoneNumber: phoneNumber
-    // }));
-    navigate(PAGE.BROWSE)
   }
 
   return (

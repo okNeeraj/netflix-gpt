@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AVATAR_RED, LOGO_RED } from '../utils/constants';
 import { PAGE } from '../router/routes';
 import { signOut } from 'firebase/auth';
@@ -30,10 +30,8 @@ const Navbar = () => {
     setProfilePhoto(user?.photoURL || AVATAR_RED)
   }, [user])
 
-  const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth).then(() => {
-      navigate(PAGE.HOME)
       dispatch(removeUser())
       // Sign-out successful.
     }).catch((error) => {
