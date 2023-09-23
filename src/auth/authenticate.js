@@ -6,7 +6,6 @@ const authenticate = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    console.log(user)
     response.user = user;
   } catch (error) {
     response.error = error;
