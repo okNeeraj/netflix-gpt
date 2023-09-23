@@ -6,6 +6,7 @@ import { PAGE } from "../router/routes";
 import validate from "../validator/validate";
 import { addUser } from "../stores/userSlice";
 import { AVATAR_RED } from "../utils/constants";
+import { auth } from "../services/firebase";
 
 const SignUpForm = () => {
   const [authError, setAuthError] = useState(null);
@@ -17,6 +18,7 @@ const SignUpForm = () => {
   const navigate = useNavigate();
 
   const handleSignUp = async () => {
+    // Client side validation
     const isError = validate(
       emailPhone.current.value,
       password.current.value,
@@ -24,16 +26,17 @@ const SignUpForm = () => {
     );
     setErrorMessage(isError);
     if (isError) return;
-    register(emailPhone.current.value, password.current.value);
 
+    // Send provided credential to server for validation
     const userCredential = await register(emailPhone.current.value, password.current.value);
     setAuthError(userCredential?.error?.message);
     if (userCredential?.error) return;
+
     const { uid, displayName, email, photoURL, phoneNumber } = userCredential.user;
     dispatch(addUser({
       uid: uid,
       displayName: displayName,
-      photoURL: AVATAR_RED,
+      photoURL: photoURL,
       email: email,
       phoneNumber: phoneNumber
     }));

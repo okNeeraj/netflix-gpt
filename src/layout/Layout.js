@@ -9,8 +9,7 @@ import { auth } from "../services/firebase";
 import { addUser } from "../stores/userSlice";
 
 const Layout = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [isLogged, setIsLogged] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loggedUser = useSelector(store => store.user);
@@ -18,15 +17,13 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsAuth(true)
         const { uid, displayName, email, photoURL, phoneNumber } = user;
-        console.log(email)
-        // dispatch(addUser(['hello', 'neeraj']))
         dispatch(addUser({
           uid: uid,
           displayName: displayName,
           photoURL: photoURL,
           email: email,
+          phoneNumber: phoneNumber
         }))
       } else {
         console.log('Signed Out')
@@ -37,7 +34,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setIsLogged(loggedUser)
-  }, [loggedUser, isLogged])
+  }, [loggedUser]);
 
   return isLogged ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
