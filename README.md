@@ -58,7 +58,6 @@ npm start
 
   - Navbar
   - Showcase
-  - Showcase
   - Trendings
   - MoviesSuggestion
     - MoviesList \* N

@@ -44,7 +44,7 @@ const Navbar = () => {
   if (!user) return;
 
   return (
-    <div className="fixed w-full z-40 px-4 py-3 flex items-center bg-gradient-to-b from-black text-white">
+    <div className="fixed w-full z-40 px-4 md:px-12 py-3 flex items-center bg-gradient-to-b from-black text-white">
       <div className='mr-14'>
         <div className="w-48">
           <Link to={PAGE.BROWSE}>
