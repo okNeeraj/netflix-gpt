@@ -14,7 +14,7 @@ const VideoBackground = ({ videoId }) => {
   const trailerKey = trailers[0].key;
 
   return (
-    <div className="absolute bg-green-400 w-full h-full">
+    <div className="absolute w-full h-fullf bg-fixed h-[820px]">
       <iframe className="w-full h-full object-cover"
         src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
         title="YouTube video player"

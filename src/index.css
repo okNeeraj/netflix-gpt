@@ -4,7 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply bg-[#141414] text-white;
+  }
+
+  .dark-nav {
+    @apply bg-[#141414] transition-colors;
+  }
+
+  .gradient-nav {
+    @apply bg-gradient-to-b from-black transition-colors;
   }
 
   h1 {

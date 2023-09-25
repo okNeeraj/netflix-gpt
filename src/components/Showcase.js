@@ -11,10 +11,10 @@ const Showcase = () => {
   if (showCaseList === null) return;
 
   const { results } = showCaseList;
-  const { id, title, overview } = results[8];
+  const { id, title, overview } = results[2];
 
   return (
-    <div className='showcase h-screen bg-gradient-to-b from-cyan-700 -mt-[70px]'>
+    <div className='showcase h-screen bg-gradient-to-b from-slate-700 -mt-[180px]'>
       <div className='h-full'>
         <VideoBackground videoId={id} />
         <div className='overlay h-full z-10 relative'>
