@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../stores/userSlice';
 
 const Navbar = () => {
+  const [navbarDark, setNavbarDark] = useState('gradient-nav');
   const [isOpen, setIsOpen] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const dropdownRef = useRef(null);
@@ -28,7 +29,22 @@ const Navbar = () => {
 
   useEffect(() => {
     setProfilePhoto(user?.photoURL || AVATAR_RED)
-  }, [user])
+  }, [user]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setNavbarDark(isScrolled ? 'dark-nav' : 'gradient-nav');
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [setNavbarDark]);
+
+  // Replace 'default-color' with the actual default background color
+
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
@@ -44,7 +60,7 @@ const Navbar = () => {
   if (!user) return;
 
   return (
-    <div className="fixed w-full z-40 px-4 md:px-12 py-3 flex items-center bg-gradient-to-b from-black text-white">
+    <div className={`${navbarDark} fixed w-full z-40 px-4 md:px-12 py-3 flex items-center text-white`}>
       <div className='mr-14'>
         <div className="w-48">
           <Link to={PAGE.BROWSE}>
@@ -52,13 +68,13 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      <div className="flex gap-10 ml-4 text-gray-400 text-sm">
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>Home</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>TV Show</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>Movies</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>New & Popular</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>My List</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-50'>Browse by Language</Link>
+      <div className="flex gap-10 ml-4 text-white text-sm">
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Home</Link>
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>TV Show</Link>
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Movies</Link>
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>New & Popular</Link>
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>My List</Link>
+        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Browse by Language</Link>
       </div>
       <div className="ml-auto">
         <div className="profile-dropdown relative" ref={dropdownRef}>
