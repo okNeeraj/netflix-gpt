@@ -8,17 +8,25 @@ export const TMDB_OPTIONS = {
 
 export const TMDB_API_URL = "https://api.themoviedb.org/3";
 
-export const MOVIE_TYPE = {
+export const MOVIES = {
+  showCase: {
+    endpoint: 'now_playing',
+    type: 'showCase',
+  },
+  videos: {
+    endpoint: 'videoId/videos',
+    type: 'videos',
+  },
   nowPlaying: {
     endpoint: 'now_playing',
-    movieType: 'nowPlaying',
+    type: 'nowPlaying',
   },
   popular: {
     endpoint: 'popular',
-    movieType: 'popular',
+    type: 'popular',
   },
   topRated: {
     endpoint: 'top_rated',
-    movieType: 'topRated',
+    type: 'topRated',
   },
 }
