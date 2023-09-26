@@ -1,6 +1,7 @@
 export const TMDB_OPTIONS = {
   method: 'GET',
   headers: {
+    "Content-Type": "application/json;charset=UTF-8",
     accept: 'application/json',
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDEyODgxZTBiNDZiZDI2MTE1ZGUxN2FkYzJjZDEwZCIsInN1YiI6IjY1MGU1NjA2ZTFmYWVkMDEzYTBhMjA4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gE32tfhvHN7OVE7J3-ZbL8VExxmBUR5m_khhKPMH7ec'
   }

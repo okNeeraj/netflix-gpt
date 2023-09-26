@@ -1,25 +1,17 @@
-import { useSelector } from "react-redux";
-import useMovie from "../hooks/useMovie";
-import { MOVIES } from "../services/tmdb";
 import MovieCard from "./MovieCard"
 
-const MovieSlider = () => {
-  const { nowPlaying } = MOVIES;
-
-  // Fetch movies and set to Redux Store
-  useMovie(nowPlaying.endpoint, nowPlaying.type);
-
-  // Receive moview list from Redux Store
-  const getNowPlaying = useSelector((store) => store.movies.nowPlaying);
-  if (getNowPlaying === null) return <h1>Not found</h1>;
-  const nowPlayingMovies = getNowPlaying.results;
-  console.log(nowPlayingMovies)
+const MovieSlider = ({ heading, data }) => {
+  if (data === null) return;
+  const movies = data.results;
 
   return (
-    <div className="flex gap-4 overflow-auto">
-      {
-        nowPlayingMovies.map((movie) => <MovieCard key={movie.id} data={movie} />)
-      }
+    <div className="movie-slider mb-8">
+      <h4 className='mb-3 text-[20px] text-[#e5e5e5]'>{heading}</h4>
+      <div className="flex gap-4 overflow-auto">
+        {
+          movies.map((movie) => <MovieCard key={movie.id} data={movie} />)
+        }
+      </div>
     </div>
   )
 }
