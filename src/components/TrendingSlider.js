@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard"
 
-const MovieSlider = ({ heading, data }) => {
+const TrendingSlider = ({ heading, data }) => {
   if (!data) return;
   const movies = data.results;
 
@@ -16,4 +16,4 @@ const MovieSlider = ({ heading, data }) => {
   )
 }
 
-export default MovieSlider
+export default TrendingSlider
