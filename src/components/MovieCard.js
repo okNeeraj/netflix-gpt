@@ -1,10 +1,11 @@
 import { TMDB_CDN_URL } from "../services/tmdb";
 
 const MovieCard = ({ data }) => {
-  // console.log(data[0])
+  if (data === null) return;
   const { title, poster_path } = data;
+
   return (
-    <div className='flex-grow-0 flex-shrink-0 w-2/12 overflow-hidden rounded'>
+    <div className='flex-grow-0 flex-shrink-0 w-36 overflow-hidden rounded'>
       <img
         src={`${TMDB_CDN_URL}/w400${poster_path}`}
         alt={title}
