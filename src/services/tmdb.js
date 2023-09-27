@@ -33,3 +33,18 @@ export const MOVIES = {
     type: 'topRated',
   },
 }
+
+export const TRENDINGS = {
+  trendingAll: {
+    endpoint: 'all/day',
+    type: 'trendingAll',
+  },
+  trendingMovies: {
+    endpoint: 'movie/day',
+    type: 'trendingMovies',
+  },
+  trendingTv: {
+    endpoint: 'tv/day',
+    type: 'trendingTv',
+  },
+}
