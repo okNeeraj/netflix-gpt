@@ -1,6 +1,6 @@
 import Showcase from '../components/Showcase';
 import MovieSlider from '../components/MovieSlider';
-import TrendingSlider from '../components/MovieSlider';
+import TrendingSlider from '../components/TrendingSlider';
 import useMovie from '../hooks/useMovie';
 import useTrending from '../hooks/useTrending';
 import { MOVIES, TRENDINGS } from '../services/tmdb';
