@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import validate from "../validator/validate";
 import { PAGE } from "../router/routes";
 import { useRef, useState } from "react";
 import authenticate from "../auth/authenticate";
 
 const SignInform = () => {
+  const [loadingBtn, setLoadingBtn] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const emailPhone = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     // Client side validation
@@ -18,11 +20,15 @@ const SignInform = () => {
     );
     setErrorMessage(isError);
     if (isError) return;
+    setLoadingBtn(true);
 
     // Send provided credential to server for validation
     const userCredential = await authenticate(emailPhone.current.value, password.current.value);
     setAuthError(userCredential?.error?.message);
+    setLoadingBtn(false)
+
     if (userCredential?.error) return;
+    navigate(PAGE.BROWSE);
   }
 
   return (
@@ -42,7 +48,11 @@ const SignInform = () => {
             <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.password}</div>
           </div>
           <div className="my-2">
-            <button onClick={handleSignIn} className="px-4 py-3 mt-4 bg-red-primary text-white block w-full rounded-[4px]">Sign In</button>
+            <button onClick={handleSignIn} disabled={loadingBtn ? true : false} className="flex items-center justify-center px-4 py-3 mt-4 bg-red-primary text-white w-full rounded-[4px] disabled:bg-red-800">
+              {
+                loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Signi In'
+              }
+            </button>
           </div>
         </form>
         <div className="flex items-center justify-between mt-3">
@@ -60,8 +70,8 @@ const SignInform = () => {
           </span>
           <Link to={PAGE.SIGNUP} className='text-white text-sm hover:underline'>Sign up now</Link>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 

@@ -7,6 +7,7 @@ import validate from "../validator/validate";
 import { addUser } from "../stores/userSlice";
 
 const SignUpForm = () => {
+  const [loadingBtn, setLoadingBtn] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
@@ -23,10 +24,12 @@ const SignUpForm = () => {
     );
     setErrorMessage(isError);
     if (isError) return;
+    setLoadingBtn(true);
 
     // Send provided credential to server for validation
     const userCredential = await register(emailPhone.current.value, password.current.value);
     setAuthError(userCredential?.error?.message);
+    setLoadingBtn(false);
     if (userCredential?.error) return;
 
     const { uid, displayName, email, photoURL, phoneNumber } = userCredential.user;
@@ -59,7 +62,11 @@ const SignUpForm = () => {
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.confirmPassword}</div>
         </div>
         <div className="my-2">
-          <button onClick={handleSignUp} className="px-4 py-3 mt-4 bg-red-primary text-white block w-full rounded-[4px]">Sign Up</button>
+          <button onClick={handleSignUp} disabled={loadingBtn ? true : false} className="flex items-center justify-center px-4 py-3 mt-4 bg-red-primary text-white w-full rounded-[4px] disabled:bg-red-800">
+            {
+              loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Signi Up'
+            }
+          </button>
         </div>
         <div className="text-md mt-8 flex items-center gap-2">
           <span className='text-sm'>
