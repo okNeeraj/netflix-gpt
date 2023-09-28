@@ -74,7 +74,11 @@ const Navbar = () => {
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Movies</Link>
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>New & Popular</Link>
       </div>
-      <div className="ml-auto">
+      <div className="ml-auto flex items-center gap-10">
+        <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
+          <span className='icon-line text-[24px]'>search</span>
+          <span>Search</span>
+        </Link>
         <div className="profile-dropdown relative" ref={dropdownRef}>
           <div className="flex items-center gap-3 cursor-pointer" onClick={handlerDropDown}>
             <div className="thumb w-8 h-8 bg-gray-800">
