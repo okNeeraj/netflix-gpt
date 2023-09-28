@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
   }, []);
 
   const isLogged = useSelector((store) => store.authenticated);
-  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading Layout...</h1>
+  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading...</h1>
 
   return isLogged ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
