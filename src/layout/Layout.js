@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../services/firebase";
 
@@ -8,13 +7,10 @@ import { addUser, removeUser } from "../stores/userSlice";
 
 import DefaultLayout from "./DefaultLayout";
 import AppLayout from "./AppLayout";
-import { PAGE } from "../router/routes";
+import { setAuthenticated } from "../stores/authSlice";
 
 const Layout = ({ children }) => {
-  const [isLogged, setIsLogged] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const loggedUser = useSelector(store => store.user);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -27,19 +23,20 @@ const Layout = ({ children }) => {
           email: email,
           phoneNumber: phoneNumber
         }));
-        setIsLogged(true)
-        navigate(PAGE.BROWSE)
+        console.log('signed in')
+        dispatch(setAuthenticated(true))
       } else {
-        setIsLogged(false)
+        console.log('signed out')
+        dispatch(setAuthenticated(false))
         dispatch(removeUser())
-        navigate(PAGE.SIGNIN)
       }
     });
     // Unsubscribe when component unmounted
     return () => unsubscribe();
   }, []);
 
-  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading...</h1>
+  const isLogged = useSelector((store) => store.authenticated);
+  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading Layout...</h1>
 
   return isLogged ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }

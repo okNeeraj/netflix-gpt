@@ -12,7 +12,7 @@ const trandingSlice = createSlice({
       const { trendingType, trendingData } = action.payload;
       const filterTopTen = {
         page: trendingData.page,
-        results: trendingData.results.slice(0, 11)
+        results: trendingData.results.slice(0, 10)
       }
       state[trendingType] = filterTopTen;
     }
