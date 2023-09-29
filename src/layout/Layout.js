@@ -9,6 +9,7 @@ import { addUser, removeUser } from "../stores/userSlice";
 import DefaultLayout from "./DefaultLayout";
 import AppLayout from "./AppLayout";
 import { setAuthenticated } from "../stores/authSlice";
+import Spinner from "../components/Spinner";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Layout = ({ children }) => {
   }, []);
 
   const isLogged = useSelector((store) => store.authenticated);
-  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading...</h1>
+  if (isLogged === null) return <Spinner />
 
   return isLogged ? <AppLayout>{children}</AppLayout> : <DefaultLayout>{children}</DefaultLayout>
 }

@@ -9,6 +9,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Profile from "../pages/Profile";
 import { PAGE } from "./routes";
+import Spinner from "../components/Spinner";
 
 const RouteType = ({ children, type }) => {
   const isLogged = useSelector((store) => store.authenticated);
@@ -25,7 +26,7 @@ const RouteType = ({ children, type }) => {
     }
   }, [isLogged, navigate, type]);
 
-  if (isLogged === null) return <h1 className="h-screen flex justify-center items-center">Loading...</h1>;
+  if (isLogged === null) return <Spinner />
 
   return <>{children}</>;
 };

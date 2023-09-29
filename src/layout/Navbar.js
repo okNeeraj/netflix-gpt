@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AVATAR_RED, LOGO_RED } from '../utils/constants';
 import { PAGE } from '../router/routes';
 import { signOut } from 'firebase/auth';
@@ -13,6 +13,8 @@ const Navbar = () => {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const user = useSelector(store => store.user)
 
   useEffect(() => {
@@ -53,6 +55,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(removeUser())
+      navigate(PAGE.HOME)
     }).catch((error) => {
     });
   }

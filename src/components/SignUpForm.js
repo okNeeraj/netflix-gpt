@@ -64,7 +64,7 @@ const SignUpForm = () => {
         <div className="my-2">
           <button onClick={handleSignUp} disabled={loadingBtn ? true : false} className="flex items-center justify-center px-4 py-3 mt-4 bg-red-primary text-white w-full rounded-[4px] disabled:bg-red-800">
             {
-              loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Signi Up'
+              loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Sign Up'
             }
           </button>
         </div>

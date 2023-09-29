@@ -8,22 +8,31 @@ const SignInform = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const emailPhone = useRef(null);
-  const password = useRef(null);
+
+  const [emailPhone, setEmailPhone] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const handleEmailPhone = (event) => {
+    setEmailPhone(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
   const handleSignIn = async () => {
     // Client side validation
     const isError = validate(
-      emailPhone.current.value,
-      password.current.value
+      emailPhone,
+      password
     );
     setErrorMessage(isError);
     if (isError) return;
     setLoadingBtn(true);
 
     // Send provided credential to server for validation
-    const userCredential = await authenticate(emailPhone.current.value, password.current.value);
+    const userCredential = await authenticate(emailPhone, password);
     setAuthError(userCredential?.error?.message);
     setLoadingBtn(false)
 
@@ -39,18 +48,18 @@ const SignInform = () => {
           <div className="p-3 bg-[#e87c03] text-white text-xs rounded-md mb-5">{authError}</div>
         )}
         <div className="mb-2 text-white">
-          <input type="text" ref={emailPhone} placeholder="Enter Email" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
+          <input type="text" value={emailPhone} onChange={handleEmailPhone} placeholder="Enter Email" autoComplete="username" className={`px-4 py-4 w-full text-white bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.emailPhone ? 'border-[#e87c03]' : 'border-transparent'}`} />
           <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.emailPhone}</div>
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="mb-2 text-white">
-            <input type="password" ref={password} placeholder="Password" className={`px-4 py-4 w-full bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.password ? 'border-[#e87c03]' : 'border-transparent'}`} />
+            <input type="password" value={password} onChange={handlePassword} placeholder="Password" autoComplete="password" className={`px-4 py-4 w-full text-white bg-[#333] border-b-2 rounded-[4px] focus:bg-[#4d4c4c] focus-visible:outline-none text-sm ${errorMessage?.password ? 'border-[#e87c03]' : 'border-transparent'}`} />
             <div className="error px-1 py-2 text-[#e87c03] text-xs">{errorMessage?.password}</div>
           </div>
           <div className="my-2">
             <button onClick={handleSignIn} disabled={loadingBtn ? true : false} className="flex items-center justify-center px-4 py-3 mt-4 bg-red-primary text-white w-full rounded-[4px] disabled:bg-red-800">
               {
-                loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Signi In'
+                loadingBtn ? <div className="w-5 h-5 border-t m-[2px] border-gray-300 border-solid rounded-full animate-spin"></div> : 'Sign In'
               }
             </button>
           </div>
