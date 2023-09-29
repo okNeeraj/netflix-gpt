@@ -10,7 +10,7 @@ const SignIn = () => {
       <div className="flex items-center min-h-screen bg-black/60">
         <SignInform />
       </div>
-    </div >
+    </div>
   )
 }
 
