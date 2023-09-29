@@ -8,22 +8,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../stores/userSlice';
 
 const Navbar = () => {
-  const [navbarDark, setNavbarDark] = useState('gradient-nav');
+  const [navbarOpacity, setNavbarOpacity] = useState(10);
   const [isOpen, setIsOpen] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const user = useSelector(store => store.user)
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener('click', handleOutsideClick);
     return () => {
       document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const maxScroll = 75; // Adjust this based on your specific needs
+
+    // Calculate the opacity based on the scroll position
+    const opacity = Math.min((scrollPosition / maxScroll) * 90 + 10, 100);
+
+    setNavbarOpacity(opacity);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -31,50 +50,38 @@ const Navbar = () => {
     setProfilePhoto(user?.photoURL || AVATAR_RED)
   }, [user]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setNavbarDark(isScrolled ? 'dark-nav' : 'gradient-nav');
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [setNavbarDark]);
-
-  // Replace 'default-color' with the actual default background color
-
-
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(removeUser())
-      // Sign-out successful.
     }).catch((error) => {
-      // An error happened.
     });
   }
   const handlerDropDown = () => {
     setIsOpen(!isOpen)
   }
+
   if (!user) return;
 
   return (
-    <div className={`${navbarDark} fixed w-full px-4 md:px-12 py-3 flex items-center text-white`} style={{ zIndex: 9999 }}>
-      <div className='mr-14'>
+    <div className={`bg-gradient-to-bF from-blackF fixed w-full px-4 md:px-12 py-3 flex items-center text-white`} style={{ zIndex: 9999, backgroundImage: `linear-gradient(180deg,#141414 ${navbarOpacity}%,transparent)` }}>
+      <div className='md:mr-14'>
         <div className="w-48">
           <Link to={PAGE.BROWSE}>
-            <img src={LOGO_RED} alt='logo' />
+            <img src={LOGO_RED} className='w-full' alt='logo' />
           </Link>
         </div>
       </div>
-      <div className="gap-10 ml-4 text-white text-sm hidden md:flex">
+      <div className="gap-6 ml-4 text-white text-sm hidden md:flex">
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Home</Link>
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>TV Show</Link>
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Movies</Link>
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>New & Popular</Link>
       </div>
-      <div className="ml-auto">
+      <div className="gap-6 ml-auto flex items-center">
+        <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
+          <span className='icon-line text-[24px]'>search</span>
+          <span className="hidden lg:block">Search</span>
+        </Link>
         <div className="profile-dropdown relative" ref={dropdownRef}>
           <div className="flex items-center gap-3 cursor-pointer" onClick={handlerDropDown}>
             <div className="thumb w-8 h-8 bg-gray-800">
