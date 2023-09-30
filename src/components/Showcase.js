@@ -11,7 +11,7 @@ const Showcase = () => {
   if (showCaseList === null) return;
 
   const { results } = showCaseList;
-  const { id, original_title, overview, backdrop_path, poster_path } = results[2];
+  const { id, original_title, overview, backdrop_path, poster_path } = results[9];
 
   return (
     <div className='showcase h-screen bg-gradient-to-b from-slate-700 mt-[-70px] xl:mt-[-180px]'>
