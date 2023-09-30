@@ -30,14 +30,15 @@ const Layout = ({ children }) => {
           email: email,
           phoneNumber: phoneNumber
         }));
-        console.log('signed in')
+        // console.log('signed in')
         dispatch(setAuthenticated(true))
       } else {
-        console.log('signed out')
+        // console.log('signed out')
         dispatch(setAuthenticated(false))
         dispatch(removeUser())
       }
     });
+
     // Unsubscribe when component unmounted
     return () => unsubscribe();
   }, []);
