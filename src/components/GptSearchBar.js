@@ -26,8 +26,6 @@ const GptSearchBar = ({ searchOpacity }) => {
         messages: [{ role: 'user', content: prompt }],
         model: 'gpt-3.5-turbo',
       });
-
-      console.log(gptResults?.choices.split(", "))
     } catch (error) {
       console.error('Error:', error);
     }
