@@ -3,7 +3,7 @@ import userReducer from "./userSlice";
 import authReducer from "./authSlice";
 import moviesReducer from "./moviesSlice";
 import trendingReducer from "./trendingSlice";
-import gptReducer from "./gptSlice";
+import searchReducer from "./searchSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ const appStore = configureStore({
     user: userReducer,
     movies: moviesReducer,
     trendings: trendingReducer,
-    gpt: gptReducer
+    search: searchReducer
   }
 });
 
