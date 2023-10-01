@@ -1,5 +1,6 @@
 import { useState } from "react"
 import openai from "../services/openai";
+import useSearch from "../hooks/useSearch";
 
 const GptSearchBar = ({ searchOpacity }) => {
   const [searchPrompt, setSearchPrompt] = useState('');
@@ -12,18 +13,19 @@ const GptSearchBar = ({ searchOpacity }) => {
     setSearchPrompt('')
   }
 
+  useSearch('movie', 'Kandahar', 'movies');
+
   const handleSearch = async () => {
     try {
       const prompt = `
       Act as a movie recommendation system and suggest some movies for the query : ${searchPrompt}.
       Only give me name of 5 movies with comma seperated.
-      result should always look like - ["Spider Man", "Elemental", "Phir Hera Pheri"]
+      result should always look like - Spider Man, Elemental, Phir Hera Pheri
     `
       const gptResults = await openai.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
         model: 'gpt-3.5-turbo',
       });
-      console.log(gptResults?.choices)
     } catch (error) {
       console.error('Error:', error);
     }
