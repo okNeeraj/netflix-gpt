@@ -4,6 +4,8 @@ const MovieCard = ({ data }) => {
   if (data === null) return;
   const { title, poster_path } = data;
 
+  if (!poster_path) return null;
+
   return (
     <div className='flex-grow-0 flex-shrink-0 w-36 overflow-hidden rounded'>
       <img

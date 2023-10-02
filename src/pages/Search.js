@@ -1,14 +1,10 @@
-import { useSelector } from "react-redux";
 import SearchResult from "../components/SearchResult";
-import { MOVIES } from "../services/tmdb";
-import useMovie from "../hooks/useMovie";
 import { useEffect, useState } from "react";
 import GptSearchBar from "../components/GptSearchBar";
 
 const Search = () => {
   const [skinOpacity, setSkinOpacity] = useState(1);
   const [searchOpacity, setSearchOpacity] = useState(0);
-  const { popular } = MOVIES;
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -34,18 +30,13 @@ const Search = () => {
     };
   }, [skinOpacity]);
 
-  useMovie(popular.endpoint, popular.type);
-
-  const movies = useSelector((store) => store.movies);
-  if (!movies) return;
-
   return (
     <div className="search-page">
       <div className={`bg-skin w-full h-[430px] absolute top-0 z-10 bg-gradient-to-b from-indigo-800 to-[#141414] transition-colors`} style={{ opacity: `${skinOpacity}` }}></div>
       <div className="search z-20 relative">
         <GptSearchBar searchOpacity={searchOpacity} />
-        <div className="mt-3 px-4 md:px-12 py-3">
-          <SearchResult heading="Popular Searches" data={movies.popular} />
+        <div className="mt-3 px-4 md:px-12 py-3 min-h-[700px]">
+          <SearchResult />
         </div>
       </div>
     </div>

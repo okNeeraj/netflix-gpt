@@ -1,19 +1,15 @@
-import SearchCard from "./SearchCard";
+import { useSelector } from "react-redux";
+import MovieSlider from "./MovieSlider";
 
-const MovieSlider = ({ heading, data }) => {
-  if (!data) return;
-  const movies = data.results;
+const SearchResult = () => {
+  const { gptResults, movies } = useSelector((store) => store.search);
+  if (!gptResults) return null;
 
   return (
-    <div className="mb-8">
-      <h4 className='mb-3 text-[20px] text-[#e5e5e5]'>{heading}</h4>
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-        {
-          movies.map((movie) => <SearchCard key={movie.id} data={movie} />)
-        }
-      </div>
-    </div>
+    <>
+      {gptResults.map((title, index) => <MovieSlider key={title} heading={title} data={movies[index]} />)}
+    </>
   )
 }
 
-export default MovieSlider
+export default SearchResult
