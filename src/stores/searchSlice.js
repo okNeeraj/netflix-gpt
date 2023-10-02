@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    movies: null
+    gptResults: null,
+    movies: null,
+    shows: null,
   },
   reducers: {
     setGptSearch: (state, action) => {
