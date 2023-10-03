@@ -6,6 +6,7 @@ const trandingSlice = createSlice({
     trendingAll: null,
     trendingMovies: null,
     trendingTv: null,
+    trendingIndia: null,
   },
   reducers: {
     setTrending: (state, action) => {

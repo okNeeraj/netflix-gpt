@@ -9,7 +9,10 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Profile from "../pages/Profile";
 import { PAGE } from "./routes";
+import TvShows from "../pages/TvShows";
 import Spinner from "../components/Spinner";
+import Movies from "../pages/Movies";
+import Latest from "../pages/Latest";
 
 const RouteType = ({ children, type }) => {
   const isLogged = useSelector((store) => store.authenticated);
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
       {
         path: "/browse",
         element: <RouteType type="private"><Browse /></RouteType>,
+      },
+      {
+        path: "/tv-shows",
+        element: <RouteType type="private"><TvShows /></RouteType>,
+      },
+      {
+        path: "/latest",
+        element: <RouteType type="private"><Latest /></RouteType>,
+      },
+      {
+        path: "/movies",
+        element: <RouteType type="private"><Movies /></RouteType>,
       },
       {
         path: "/search",

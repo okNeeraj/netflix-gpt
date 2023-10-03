@@ -19,6 +19,7 @@ const Browse = () => {
   useMovie(topRated.endpoint, topRated.type);
   useMovie(popular.endpoint, popular.type);
   useMovie(popular.endpoint, popular.type);
+  useMovie(popular.endpoint, 'bollywood', null, 'hi');
 
   // Receive moview list from Redux Store
   const trendings = useSelector((store) => store.trendings);
@@ -27,11 +28,12 @@ const Browse = () => {
 
   return (
     <div className='broswe-page'>
-      <Showcase />
+      <Showcase genreId={null} originalLanguage='en' resultIndex={12} />
       <div className='moview-by-type px-4 md:px-12 mt-[-80px] z-50 relative'>
         <MovieSlider heading="Now Playing" data={movies.nowPlaying} />
-        <MovieSlider heading="Trending Now" data={trendings.trendingAll} />
-        <TrendingSlider heading="Top 10 Movies in India" data={trendings.trendingMovies} />
+        <MovieSlider heading="Trending Now" data={trendings.popular} />
+        <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} />
+        <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} />
         <MovieSlider heading="Top Rated Movies" data={movies.topRated} />
         <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} />
         <MovieSlider heading="Popular Movies" data={movies.popular} />
