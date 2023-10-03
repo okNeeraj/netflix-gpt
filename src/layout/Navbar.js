@@ -76,9 +76,9 @@ const Navbar = () => {
       </div>
       <div className="gap-6 ml-4 text-white text-sm hidden md:flex">
         <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Home</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>TV Show</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Movies</Link>
-        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>New & Popular</Link>
+        <Link to={PAGE.SHOWS} className='hover:text-gray-400'>TV Show</Link>
+        <Link to={PAGE.MOVIES} className='hover:text-gray-400'>Movies</Link>
+        <Link to={PAGE.LATEST} className='hover:text-gray-400'>New & Popular</Link>
       </div>
       <div className="gap-6 ml-auto flex items-center">
         <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
