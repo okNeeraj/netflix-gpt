@@ -1,15 +1,18 @@
 import Showcase from '../components/Showcase';
 import MovieSlider from '../components/MovieSlider';
 import useMovie from '../hooks/useMovie';
-import useTrending from '../hooks/useTrending';
-import { MOVIES, TRENDINGS } from '../services/tmdb';
+import { SHOWCASE, MOVIES } from '../services/tmdb';
 import { useSelector } from 'react-redux';
+import useShowCase from '../hooks/useShowCase';
 
 
 const Movies = () => {
+  const { movie } = SHOWCASE;
   const { nowPlaying, popular, topRated } = MOVIES;
 
   // Fetch movies and set to Redux Store
+  useShowCase(movie.endpoint, movie.type, null, 'hi', 1);
+
   useMovie(nowPlaying.endpoint, nowPlaying.type);
   useMovie(topRated.endpoint, topRated.type);
   useMovie(popular.endpoint, popular.type);
@@ -25,14 +28,15 @@ const Movies = () => {
   useMovie(popular.endpoint, 'adventure', 12);
   useMovie(popular.endpoint, 'animation', 16);
 
-  // Receive moview list from Redux Store
+  // Receive data list from Redux Store
+  const showCase = useSelector((store) => store.showCase.movie);
   const movies = useSelector((store) => store.movies);
   if (!movies) return;
 
   return (
     <div className='broswe-page'>
-      <Showcase genreId={null} originalLanguage='hi' resultIndex={1} />
-      <div className='moview-by-type px-4 md:px-12 mt-[-80px] z-50 relative'>
+      {showCase && <Showcase data={showCase} />}
+      <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
         <MovieSlider heading="Bollywood Superstar" data={movies.bollywood} />
         <MovieSlider heading="Hollywood Movies" data={movies.hollywood} />
         <MovieSlider heading="Action Thriller" data={movies.thriller} />

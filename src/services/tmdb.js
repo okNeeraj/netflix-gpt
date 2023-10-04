@@ -11,6 +11,40 @@ export const TMDB_CDN_URL = "https://image.tmdb.org/t/p/"
 
 export const TMDB_API_URL = "https://api.themoviedb.org/3";
 
+export const SHOWCASE = {
+  landingPage: {
+    endpoint: 'movie/popular',
+    type: 'landingPage',
+  },
+  movie: {
+    endpoint: 'movie/popular',
+    type: 'movie',
+  },
+  tvShow: {
+    endpoint: 'movie/popular',
+    type: 'tvShow',
+  },
+  latest: {
+    endpoint: 'movie/popular',
+    type: 'latest',
+  },
+}
+
+export const TRENDINGS = {
+  trendingAll: {
+    endpoint: 'all/day',
+    type: 'trendingAll',
+  },
+  trendingMovies: {
+    endpoint: 'movie/day',
+    type: 'trendingMovies',
+  },
+  trendingTv: {
+    endpoint: 'tv/day',
+    type: 'trendingTv',
+  },
+}
+
 export const MOVIES = {
   showCase: {
     endpoint: 'popular',
@@ -39,21 +73,6 @@ export const MOVIES = {
   byGenre: {
     endpoint: 'movie',
     type: 'topRated',
-  },
-}
-
-export const TRENDINGS = {
-  trendingAll: {
-    endpoint: 'all/day',
-    type: 'trendingAll',
-  },
-  trendingMovies: {
-    endpoint: 'movie/day',
-    type: 'trendingMovies',
-  },
-  trendingTv: {
-    endpoint: 'tv/day',
-    type: 'trendingTv',
   },
 }
 

@@ -3,14 +3,24 @@ import MovieSlider from '../components/MovieSlider';
 import TrendingSlider from '../components/TrendingSlider';
 import useMovie from '../hooks/useMovie';
 import useTrending from '../hooks/useTrending';
-import { MOVIES, TRENDINGS } from '../services/tmdb';
+import { SHOWCASE, TRENDINGS, MOVIES } from '../services/tmdb';
 import { useSelector } from 'react-redux';
+import useShowCase from '../hooks/useShowCase';
 
 const Browse = () => {
+  const { landingPage, tvShow, movie, latest } = SHOWCASE;
   const { trendingAll, trendingTv, trendingMovies } = TRENDINGS;
   const { nowPlaying, popular, topRated } = MOVIES;
 
-  // Fetch movies and set to Redux Store
+  /**
+   * Fetch data using below custom hooks, and set to Redux Store
+   * @useShowCase 
+   * @useTrending 
+   * @useMovies 
+   */
+
+  useShowCase(landingPage.endpoint, landingPage.type, null, 'en', 19);
+
   useTrending(trendingAll.endpoint, trendingAll.type);
   useTrending(trendingTv.endpoint, trendingTv.type);
   useTrending(trendingMovies.endpoint, trendingMovies.type);
@@ -21,22 +31,30 @@ const Browse = () => {
   useMovie(popular.endpoint, popular.type);
   useMovie(popular.endpoint, 'bollywood', null, 'hi');
 
-  // Receive moview list from Redux Store
+  /**
+   * Receive data from Redux Store
+   * @useShowCase
+   * @useTrending 
+   * @useMovies 
+   */
+
+  const showCase = useSelector((store) => store.showCase.landingPage);
   const trendings = useSelector((store) => store.trendings);
   const movies = useSelector((store) => store.movies);
+
   if (!movies) return;
 
   return (
     <div className='broswe-page'>
-      <Showcase genreId={null} originalLanguage='en' resultIndex={12} />
-      <div className='moview-by-type px-4 md:px-12 mt-[-80px] z-50 relative'>
-        <MovieSlider heading="Now Playing" data={movies.nowPlaying} />
-        <MovieSlider heading="Trending Now" data={trendings.popular} />
-        <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} />
-        <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} />
-        <MovieSlider heading="Top Rated Movies" data={movies.topRated} />
-        <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} />
-        <MovieSlider heading="Popular Movies" data={movies.popular} />
+      {showCase && <Showcase data={showCase} />}
+      <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
+        {movies.nowPlaying && <MovieSlider heading="Now Playing" data={movies.nowPlaying} />}
+        {trendings.popular && <MovieSlider heading="Trending Now" data={trendings.popular} />}
+        {trendings.trendingMovies && <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} />}
+        {movies.bollywood && <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} />}
+        {movies.topRated && <MovieSlider heading="Top Rated Movies" data={movies.topRated} />}
+        {trendings.trendingTv && <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} />}
+        {movies.popular && <MovieSlider heading="Popular Movies" data={movies.popular} />}
       </div>
     </div>
   )

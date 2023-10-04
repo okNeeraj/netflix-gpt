@@ -7,7 +7,7 @@ const MovieCard = ({ data }) => {
   if (!poster_path) return null;
 
   return (
-    <div className='flex-grow-0 flex-shrink-0 w-36 overflow-hidden rounded'>
+    <div className='flex-grow-0 flex-shrink-0 w-28 md:w-36 overflow-hidden rounded'>
       <img
         src={`${TMDB_CDN_URL}/w400${poster_path}`}
         alt={title}

@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../stores/userSlice';
 
 const Navbar = () => {
-  const [navbarOpacity, setNavbarOpacity] = useState(10);
+  const [navbarOpacity, setNavbarOpacity] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const dropdownRef = useRef(null);
@@ -16,6 +17,14 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const user = useSelector(store => store.user)
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -29,12 +38,16 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleResize = () => {
+    setIsLargeScreen(window.innerWidth > 768);
+  };
+
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     const maxScroll = 75; // Adjust this based on your specific needs
 
     // Calculate the opacity based on the scroll position
-    const opacity = Math.min((scrollPosition / maxScroll) * 90 + 10, 100);
+    const opacity = Math.min((scrollPosition / maxScroll) * 90 + 0, 100);
 
     setNavbarOpacity(opacity);
   };
@@ -66,54 +79,68 @@ const Navbar = () => {
   if (!user) return;
 
   return (
-    <div className={`bg-gradient-to-bF from-blackF fixed w-full px-4 md:px-12 py-3 flex items-center text-white`} style={{ zIndex: 9999, backgroundImage: `linear-gradient(180deg,#141414 ${navbarOpacity}%,transparent)` }}>
-      <div className='md:mr-14'>
-        <div className="w-48">
-          <Link to={PAGE.BROWSE}>
-            <img src={LOGO_RED} className='w-full' alt='logo' />
-          </Link>
-        </div>
-      </div>
-      <div className="gap-6 ml-4 text-white text-sm hidden md:flex">
-        <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Home</Link>
-        <Link to={PAGE.SHOWS} className='hover:text-gray-400'>TV Show</Link>
-        <Link to={PAGE.MOVIES} className='hover:text-gray-400'>Movies</Link>
-        <Link to={PAGE.LATEST} className='hover:text-gray-400'>New & Popular</Link>
-      </div>
-      <div className="gap-6 ml-auto flex items-center">
-        <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
-          <span className='icon-line text-[24px]'>search</span>
-          <span className="hidden lg:block">Search</span>
-        </Link>
-        <div className="profile-dropdown relative" ref={dropdownRef}>
-          <div className="flex items-center gap-3 cursor-pointer" onClick={handlerDropDown}>
-            <div className="thumb w-8 h-8 bg-gray-800">
-              <img src={profilePhoto} alt={user.displayName} />
-            </div>
-            <div className="text-sm hidden lg:block">{user.displayName}</div>
-          </div>
-          {isOpen &&
-            <div className="bg-black/95 absolute z-50 right-0 top-10 min-w-[170px] pt-2 border border-gray-900 rounded-md">
-              <a href='#!' className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
-                <div className="w-5 h-5 bg-cyan-500"></div>
-                <div className='title'>Neeraj</div>
-              </a>
-              <a href='#!' className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
-                <div className="w-5 h-5 bg-green-500"></div>
-                <div className='title'>Child</div>
-              </a>
-              <Link to={PAGE.PROFILE} className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
-                <div className="w-5 h-5 bg-gray-700"></div>
-                <div className='title'>Manage Profile</div>
+    <>
+      <div className={`h-[115px] fixed w-full px-4 md:px-12 py-3 text-white ${!isLargeScreen && 'ddd'}`} style={{
+        zIndex: 9999,
+        backdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px)`,
+        backgroundImage: isLargeScreen ? `linear-gradient(180deg, #141414 ${navbarOpacity}%,transparent)` : 'none'
+      }}>
+        <div className='flex items-center'>
+          <div className='md:mr-14'>
+            <div className="w-48">
+              <Link to={PAGE.BROWSE}>
+                <img src={LOGO_RED} className='w-full' alt='logo' />
               </Link>
-              <div className="px-2 gap-3 text-xs text-slate-300 flex justify-center items-center border-t border-gray-700 mt-4 hover:text-white">
-                <button className='p-3' onClick={handleSignOut} > Sign Out</button>
-              </div>
             </div>
-          }
+          </div>
+          <div className="gap-6 ml-4 text-white text-sm hidden md:flex">
+            <Link to={PAGE.BROWSE} className='hover:text-gray-400'>Home</Link>
+            <Link to={PAGE.SHOWS} className='hover:text-gray-400'>TV Show</Link>
+            <Link to={PAGE.MOVIES} className='hover:text-gray-400'>Movies</Link>
+            <Link to={PAGE.LATEST} className='hover:text-gray-400'>New & Popular</Link>
+          </div>
+          <div className="gap-6 ml-auto flex items-center">
+            <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
+              <span className='icon-line text-[24px]'>search</span>
+              <span className="hidden lg:block">Search</span>
+            </Link>
+            <div className="profile-dropdown relative" ref={dropdownRef}>
+              <div className="flex items-center gap-3 cursor-pointer" onClick={handlerDropDown}>
+                <div className="thumb w-8 h-8 bg-gray-800">
+                  <img src={profilePhoto} alt={user.displayName} />
+                </div>
+                <div className="text-sm hidden lg:block">{user.displayName}</div>
+              </div>
+              {isOpen &&
+                <div className="bg-black/95 absolute z-50 right-0 top-10 min-w-[170px] pt-2 border border-gray-900 rounded-md">
+                  <a href='#!' className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
+                    <div className="w-5 h-5 bg-cyan-500"></div>
+                    <div className='title'>Neeraj</div>
+                  </a>
+                  <a href='#!' className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
+                    <div className="w-5 h-5 bg-green-500"></div>
+                    <div className='title'>Child</div>
+                  </a>
+                  <Link to={PAGE.PROFILE} className='flex items-center px-4 py-2 gap-3 text-xs text-slate-500 hover:text-white'>
+                    <div className="w-5 h-5 bg-gray-700"></div>
+                    <div className='title'>Manage Profile</div>
+                  </Link>
+                  <div className="px-2 gap-3 text-xs text-slate-300 flex justify-center items-center border-t border-gray-700 mt-4 hover:text-white">
+                    <button className='p-3' onClick={handleSignOut} > Sign Out</button>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        <div className="gap-4 text-white text-sm flex overflow-auto py-3 mt-3">
+          <Link to={PAGE.BROWSE} className='hover:text-gray-400 text-center text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>Home</Link>
+          <Link to={PAGE.SHOWS} className='hover:text-gray-400 text-center min-w-[78px] text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>TV Show</Link>
+          <Link to={PAGE.MOVIES} className='hover:text-gray-400 text-center text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>Movies</Link>
+          <Link to={PAGE.LATEST} className='hover:text-gray-400 text-center min-w-[115px] text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>New & Popular</Link>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
