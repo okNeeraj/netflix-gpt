@@ -87,9 +87,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`navbar ${showNavList && !isLargeScreen ? 'h-[115px]' : 'h-[70px]'}   backdrop-blur-xl fixed w-full px-4 md:px-12 py-3 text-white ${!isLargeScreen && 'ddd'}`} style={{
+      <div className={`navbar ${showNavList && !isLargeScreen ? 'h-[115px]' : 'h-[70px]'} backdrop-blur-xl md:backdrop-blur-none fixed w-full px-4 md:px-12 py-3 text-white ${!isLargeScreen && 'ddd'}`} style={{
         zIndex: 9999,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: !isLargeScreen && 'rgba(0, 0, 0, 0.5)',
         // backdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
         // WebkitBackdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
         backgroundImage: isLargeScreen ? `linear-gradient(180deg, #141414 ${navbarOpacity}%,transparent)` : `url(${BACKDROP})`
