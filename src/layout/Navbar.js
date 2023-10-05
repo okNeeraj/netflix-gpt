@@ -147,8 +147,8 @@ const Navbar = () => {
           className="gap-4 text-white text-sm flex overflow-auto py-3 mt-3 absolute left-4 right-4 bottom-[-4px]"
           style={{
             transition: '0.5s',
-            transform: showNavList ? 'translateY(0px)' : 'translateY(-120px) scale(0.8)',
-            opacity: showNavList ? '' : '0'
+            transform: showNavList && !isLargeScreen ? 'translateY(0px)' : 'translateY(-120px) scale(0.8)',
+            opacity: showNavList && !isLargeScreen ? '' : '0'
           }}
         >
           <Link to={PAGE.BROWSE} className='hover:text-gray-400 text-center text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>Home</Link>
