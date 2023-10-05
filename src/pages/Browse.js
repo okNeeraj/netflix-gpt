@@ -42,7 +42,7 @@ const Browse = () => {
   const trendings = useSelector((store) => store.trendings);
   const movies = useSelector((store) => store.movies);
 
-  if (!movies) return;
+  if (!movies && !showCase) return;
 
   return (
     <div className='broswe-page'>

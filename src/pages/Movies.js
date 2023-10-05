@@ -31,7 +31,7 @@ const Movies = () => {
   // Receive data list from Redux Store
   const showCase = useSelector((store) => store.showCase.movie);
   const movies = useSelector((store) => store.movies);
-  if (!movies) return;
+  if (!movies && !showCase) return;
 
   return (
     <div className='broswe-page'>

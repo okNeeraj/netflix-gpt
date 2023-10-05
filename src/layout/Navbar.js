@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AVATAR_RED, LOGO_RED } from '../utils/constants';
+import { AVATAR_RED, LOGO_RED, BACKDROP } from '../utils/constants';
 import { PAGE } from '../router/routes';
 import { signOut } from 'firebase/auth';
 import { auth } from '../services/firebase';
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../stores/userSlice';
 
 const Navbar = () => {
+  const [showNavList, setShowNavList] = useState(true);
   const [navbarOpacity, setNavbarOpacity] = useState(0);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -44,12 +45,17 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    const maxScroll = 75; // Adjust this based on your specific needs
+    const maxScroll = 75;
 
-    // Calculate the opacity based on the scroll position
     const opacity = Math.min((scrollPosition / maxScroll) * 90 + 0, 100);
-
     setNavbarOpacity(opacity);
+
+    if (scrollPosition < maxScroll) {
+      setShowNavList(true)
+    } else {
+      setShowNavList(false)
+    }
+
   };
 
   useEffect(() => {
@@ -78,16 +84,20 @@ const Navbar = () => {
 
   if (!user) return;
 
+
   return (
     <>
-      <div className={`h-[115px] fixed w-full px-4 md:px-12 py-3 text-white ${!isLargeScreen && 'ddd'}`} style={{
+      <div className={`navbar ${showNavList && !isLargeScreen ? 'h-[115px]' : 'h-[70px]'}   backdrop-blur-xl fixed w-full px-4 md:px-12 py-3 text-white ${!isLargeScreen && 'ddd'}`} style={{
         zIndex: 9999,
-        backdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px)`,
-        backgroundImage: isLargeScreen ? `linear-gradient(180deg, #141414 ${navbarOpacity}%,transparent)` : 'none'
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        // backdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
+        // WebkitBackdropFilter: isLargeScreen ? 'blur(0)' : `blur(${navbarOpacity}px) contrast(60%)`,
+        backgroundImage: isLargeScreen ? `linear-gradient(180deg, #141414 ${navbarOpacity}%,transparent)` : `url(${BACKDROP})`
       }}>
+
         <div className='flex items-center'>
           <div className='md:mr-14'>
-            <div className="w-48">
+            <div className="w-40 md:w-48">
               <Link to={PAGE.BROWSE}>
                 <img src={LOGO_RED} className='w-full' alt='logo' />
               </Link>
@@ -133,7 +143,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="gap-4 text-white text-sm flex overflow-auto py-3 mt-3">
+        <div
+          className="gap-4 text-white text-sm flex overflow-auto py-3 mt-3 absolute left-4 right-4 bottom-[-4px]"
+          style={{
+            transition: '0.5s',
+            transform: showNavList ? 'translateY(0px)' : 'translateY(-120px) scale(0.8)',
+            opacity: showNavList ? '' : '0'
+          }}
+        >
           <Link to={PAGE.BROWSE} className='hover:text-gray-400 text-center text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>Home</Link>
           <Link to={PAGE.SHOWS} className='hover:text-gray-400 text-center min-w-[78px] text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>TV Show</Link>
           <Link to={PAGE.MOVIES} className='hover:text-gray-400 text-center text-xs border-solid border py-1 px-3 rounded-[50px] border-gray-400'>Movies</Link>

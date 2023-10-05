@@ -21,5 +21,12 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#e50914",
-  "background_color": "rgba(20, 20, 20, 0.9)"
+  "background_color": "rgba(20, 20, 20, 0.9)",
+  "background": {
+    "theme_color": "#e50914",
+    "theme_color_state": "opaque",
+    "maskable_icon": false,
+    "image": "blur.png",
+    "color": "white"
+  }
 }

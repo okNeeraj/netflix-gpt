@@ -32,7 +32,7 @@ const Showcase = ({ data }) => {
           {/* For Mobile Onlye */}
           <div className='md:hidden bg-rrr pb-8 md:pb-0 backdrop-blur-xl md:backdrop-blur-0 w-full h-full flex items-centerF' style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.01),#141414 98%)' }}>
             <div className='px-4 md:px-12 w-full text-white'>
-              <div className='relative h-[400px] max-w-80 m-auto  mt-[120px] rounded-lg overflow-hidden shadow-md'>
+              <div className='relative h-[415px] max-w-80 m-auto  mt-[140px] rounded-lg overflow-hidden shadow-md'>
                 <div className='mobile-cover w-full h-full mt-[-5%]'>
                   <img src={`${TMDB_CDN_URL}/w500${poster_path}`} className='object-cover w-full h-full' alt={title} />
                 </div>

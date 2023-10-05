@@ -15,6 +15,10 @@
     @apply bg-[#141414] transition-colors;
   }
 
+  .navbar {
+    transition: 0.5s;
+  }
+
   .gradient-nav {
     @apply bg-gradient-to-b from-black transition-colors;
   }
