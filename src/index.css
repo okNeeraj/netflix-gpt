@@ -7,12 +7,21 @@
     scroll-behavior: smooth;
   }
 
+  @media only screen and (max-device-width: 480px) and (orientation: portrait),
+  only screen and (max-device-width: 568px) and (orientation: landscape),
+  only screen and (max-device-width: 768px) and (orientation: portrait),
+  only screen and (max-device-width: 1024px) and (orientation: landscape) {}
+
   body {
     @apply bg-[#141414] text-white;
   }
 
   .dark-nav {
     @apply bg-[#141414] transition-colors;
+  }
+
+  .navbar {
+    transition: 0.5s;
   }
 
   .gradient-nav {

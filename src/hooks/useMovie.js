@@ -3,9 +3,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
 import { setMovie } from '../stores/moviesSlice';
 
-const useMovie = (endpoint, movieType, genreId, originalLanguage) => {
+/**
+ * Custom hook to fetch movie data and update the Redux store.
+ *
+ * This hook fetches movie data using the provided endpoint, genre ID, and original language,
+ * and updates the Redux store using the setMovie action.
+ *
+ * @param {string} endpoint - The endpoint to fetch data from.
+ * @param {string} movieState - The movie state to update in the Redux store (e.g., showCase, videos).
+ * @param {number} genreId - Optional. The genre ID for filtering movies.
+ * @param {string} originalLanguage - Optional. The original language for filtering movies.
+ * @returns {void}
+ * @example
+ * const endpoint = 'popular'; // Endpoint for popular movies
+ * const movieState = 'showCase'; // Movie state: showCase, videos, etc.
+ * const genreId = 28; // Genre ID for Action (optional)
+ * const originalLanguage = 'en'; // Original language (optional)
+ * useMovie(endpoint, movieState, genreId, originalLanguage);
+ */
+
+const useMovie = (endpoint, movieState, genreId, originalLanguage) => {
   const dispatch = useDispatch();
-  const movieData = useSelector((store) => store.movies[movieType]);
   const fetchData = async () => {
     try {
       let apiUrl = `${TMDB_API_URL}/movie/${endpoint}?language=en-US&page=1`;
@@ -20,17 +38,15 @@ const useMovie = (endpoint, movieType, genreId, originalLanguage) => {
 
       const response = await fetch(apiUrl, TMDB_OPTIONS);
       const result = await response.json();
-      dispatch(setMovie({ movieType, movieData: result }))
+      dispatch(setMovie({ movieState, movieData: result }))
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
   }
 
   useEffect(() => {
-    if (!movieData || movieType === 'showCase' || movieType === 'videos') {
-      fetchData()
-    }
-  }, [dispatch, movieData])
+    fetchData()
+  }, [])
 }
 
 export default useMovie;

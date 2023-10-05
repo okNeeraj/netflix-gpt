@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Redux store to manage movie data.
+ *
+ * This slice manages the state of various movie types like showCase, videos, nowPlaying, etc.
+ * @see {@link https://redux-toolkit.js.org/api/createslice | createSlice}
+ */
+
 const moviesSlice = createSlice({
   name: "movies",
   initialState: {
@@ -27,9 +34,18 @@ const moviesSlice = createSlice({
     thriller: null,
   },
   reducers: {
+    /**
+     * Action to set movie data in the Redux store.
+     *
+     * This action sets the movie data for a specific movie state (e.g., showCase, videos) in the Redux store.
+     *
+     * @param {string} movieState - The movie state (e.g., showCase, videos).
+     * @param {object} movieData - The movie data to set in the Redux store.
+     * @type {import("types").ActionCreatorWithPayload}
+     */
     setMovie: (state, action) => {
-      const { movieType, movieData } = action.payload
-      state[movieType] = movieData;
+      const { movieState, movieData } = action.payload
+      state[movieState] = movieData;
     }
   }
 });

@@ -65,24 +65,30 @@ const GptSearchBar = ({ searchOpacity }) => {
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">
-              <span className='icon-fill text-[32px] md:text-[36px] absolute left-4 top-3 md:top-5'>search</span>
+              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>search</span>
               <input
                 type="text"
                 placeholder="Search Movies, Show and more"
-                className={`py-4 md:py-6 px-16 w-full bg-gray-600 bg-opacity-70 rounded focus:bg-opacity-100 focus-visible:outline-none text-lg`}
+                className={`py-4 md:py-6 pl-4 pr-12 md:px-14 w-full bg-gray-600 bg-opacity-70 rounded focus:bg-opacity-100 focus-visible:outline-none text-lg`}
                 onChange={handlePrompt}
                 value={searchPrompt}
               />
 
-              {searchPrompt && <span className='icon-fill text-[32px] md:text-[36px] absolute right-4 top-3 md:top-5 cursor-pointer' onClick={handleClearPrompt}>close</span>}
+              {searchPrompt && <span className='icon-fill text-[28px] mt-1 md:text-[36px] absolute right-4 top-3 md:top-4 cursor-pointer' onClick={handleClearPrompt}>close</span>}
             </div>
             <button
-              className={`py-4 md:py-6 w-24 px-5 bg-red-primary rounded text-white disabled:bg-red-800`}
+              className={`py-4 md:py-6 w-24 px-2 md:px-5 flex items-center justify-center bg-red-primary rounded text-white disabled:bg-red-800`}
               onClick={handleSearch}
               disabled={searchPrompt === '' ? true : false}
             >
               {
-                loadingBtn ? <div className="w-5 h-5 border-t m-auto border-gray-300 border-solid rounded-full animate-spin"></div> : 'Search'
+                loadingBtn ?
+                  <div className="w-5 h-5 border-t m border-gray-300 border-solid rounded-full animate-spin"></div>
+                  :
+                  <>
+                    <span className='icon-fill text-[22px] md:text-[32px] md:hidden'>search</span>
+                    <span className='hidden md:inline-block'>Search</span>
+                  </>
               }
             </button>
           </div>

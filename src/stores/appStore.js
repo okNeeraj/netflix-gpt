@@ -4,6 +4,7 @@ import authReducer from "./authSlice";
 import moviesReducer from "./moviesSlice";
 import trendingReducer from "./trendingSlice";
 import searchReducer from "./searchSlice";
+import showCaseReducer from "./showCaseSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const appStore = configureStore({
     user: userReducer,
     movies: moviesReducer,
     trendings: trendingReducer,
-    search: searchReducer
+    search: searchReducer,
+    showCase: showCaseReducer
   }
 });
 
