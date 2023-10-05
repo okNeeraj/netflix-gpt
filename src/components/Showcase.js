@@ -6,6 +6,8 @@ const Showcase = ({ data }) => {
   const { title, overview, backdrop_path, poster_path } = data?.info;
   const { results } = data?.videos
 
+  console.log(data?.info)
+
   return (
     <div className={`showcase md:h-screen mt-[-70px] xl:h-auto xl:aspect-video bg-gradient-to-b from-slate-700 xl:mt-[-180pxL]`}>
       <div className='w-full h-full w-96F h-96F relative'>
