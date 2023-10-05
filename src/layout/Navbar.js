@@ -144,7 +144,7 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className="gap-4 text-white text-sm flex overflow-auto py-3 mt-3 absolute left-4 right-4 bottom-[-4px]"
+          className="gap-4 text-white text-sm flex md:hidden overflow-auto py-3 mt-3 absolute left-4 right-4 bottom-[-4px]"
           style={{
             transition: '0.5s',
             transform: showNavList && !isLargeScreen ? 'translateY(0px)' : 'translateY(-120px) scale(0.8)',
