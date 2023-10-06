@@ -58,3 +58,64 @@
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
   }
 }
+
+:root {
+  --swiper-navigation-size: 32px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+  color: #fff;
+  width: 72px;
+  height: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
+.swiper-button-disabled {
+  display: none;
+}
+
+.swiper:hover .swiper-button-prev:not(.swiper-button-disabled),
+.swiper:hover .swiper-button-next:not(.swiper-button-disabled) {
+  display: flex;
+}
+
+
+
+.swiper-button-prev {
+  left: 0;
+  background: linear-gradient(90deg, rgb(17, 17, 17), transparent);
+}
+
+.swiper-button-prev:hover {
+  left: 0;
+  background: linear-gradient(90deg, black, transparent);
+}
+
+.swiper-button-next {
+  right: 0;
+  background: linear-gradient(270deg, rgb(17, 17, 17), transparent);
+}
+
+.swiper-button-next:hover {
+  right: 0;
+  background: linear-gradient(270deg, black, transparent);
+}
+
+
+@media (max-width: 767px) {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+    opacity: 0;
+  }
+}

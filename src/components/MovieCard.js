@@ -24,7 +24,7 @@ const MovieCard = ({ data }) => {
 
   return (
     <div
-      className='cursor-pointer flex-grow-0 flex-shrink-0 w-28 md:w-36 overflow-hidden rounded'
+      className='cursor-pointer flex-grow-0 flex-shrink-0 w-28F md:w-36F w-full overflow-hidden rounded'
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >
