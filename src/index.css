@@ -14,6 +14,7 @@
 
   body {
     @apply bg-[#141414] text-white;
+    position: relative;
   }
 
   .dark-nav {
@@ -42,6 +43,29 @@
     font-family: sans-serif;
     color: #000;
     line-height: 200px;
+  }
+
+  .movie-hovered {
+    display: none;
+  }
+
+  .movie-hovered.hovered {
+    display: block;
+  }
+
+  .hover-container {
+    opacity: 1;
+    transform: scale(0.8);
+    transition: opacity 0.1s ease-in, transform 0.2s ease-in;
+  }
+
+  .movie-hovered.hovered:hover {
+    transition: 1s;
+  }
+
+  .movie-hovered.hovered:hover .hover-container {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
