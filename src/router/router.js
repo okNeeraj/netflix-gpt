@@ -13,6 +13,7 @@ import TvShows from "../pages/TvShows";
 import Spinner from "../components/Spinner";
 import Movies from "../pages/Movies";
 import Latest from "../pages/Latest";
+import Watch from "../pages/Watch";
 
 const RouteType = ({ children, type }) => {
   const isLogged = useSelector((store) => store.authenticated);
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/movie-assistant",
         element: <RouteType type="private"><Search /></RouteType>
+      },
+      {
+        path: "/watch/:contentId",
+        element: <RouteType type="private"><Watch /></RouteType>
       },
       {
         path: "/login",
