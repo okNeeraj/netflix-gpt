@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+import { PAGE } from "../router/routes";
 import { TMDB_CDN_URL } from "../services/tmdb";
 
 const MovieCardHover = ({ data, centerPosition, hovered }) => {
-  const { title, poster_path, backdrop_path, release_date } = data;
+  const { id, title, poster_path, backdrop_path, release_date } = data;
   const releaseYear = release_date.split("-")[0];
 
   let safeTranslateX = '-82px';
@@ -26,18 +28,18 @@ const MovieCardHover = ({ data, centerPosition, hovered }) => {
     >
       <div className="hover-container bg-[#141414] shadow-md shadow-slate-950 m-2 rounded-md overflow-hidden">
         <div className='h-40 w-full bg-gray-700'>
-          <a href="#!" className='inline-block w-full h-full'>
+          <Link to={`${PAGE.WATCH}/${id}`} target="_blank" className='inline-block w-full h-full'>
             <img
               src={backdrop_path ? `${TMDB_CDN_URL}/w400${poster_path}` : `${TMDB_CDN_URL}/w400${poster_path}`}
               alt={title}
               className="w-full h-full object-cover" />
-          </a>
+          </Link>
         </div>
         <div className="detail p-5">
           <div className='actions flex items-center gap-3'>
-            <button className='w-10 h-10 flex items-center bg-white hover:bg-gray-200 text-black rounded-full justify-center'>
+            <Link to={`${PAGE.WATCH}/${id}`} target="_blank" className='w-10 h-10 flex items-center bg-white hover:bg-gray-200 text-black rounded-full justify-center'>
               <span className='icon-fill text-[36px]'>play_arrow</span>
-            </button>
+            </Link>
             <button className='w-10 h-10 flex items-center bg-[#262626] text-white rounded-full justify-center border-2 border-solid border-gray-500 hover:border-gray-50'>
               <span className='icon-line text-[24px]'>add</span>
             </button>

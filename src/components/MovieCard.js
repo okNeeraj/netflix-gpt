@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { TMDB_CDN_URL } from "../services/tmdb";
 import { createPortal } from "react-dom";
 import MovieCardHover from "./MovieCardHover";
+import { Link } from "react-router-dom";
+import { PAGE } from "../router/routes";
 
 const MovieCard = ({ data }) => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -40,7 +42,7 @@ const MovieCard = ({ data }) => {
 
   if (data === null) return null;
 
-  const { title, poster_path } = data;
+  const { id, title, poster_path } = data;
   if (!poster_path) return null;
 
   return (
@@ -50,11 +52,13 @@ const MovieCard = ({ data }) => {
       onMouseLeave={handleLeave}
       ref={cardRef}
     >
-      <img
-        src={`${TMDB_CDN_URL}/w400${poster_path}`}
-        alt={title}
-        className="w-full"
-      />
+      <Link to={`${PAGE.WATCH}/${id}`} target="_blank">
+        <img
+          src={`${TMDB_CDN_URL}/w400${poster_path}`}
+          alt={title}
+          className="w-full"
+        />
+      </Link>
 
       {/* {title === 'The Creator' && */}
       {hovered && isLargeScreen &&

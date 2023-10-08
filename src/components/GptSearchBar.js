@@ -61,7 +61,7 @@ const GptSearchBar = ({ searchOpacity }) => {
         <h1 className="text-5xl mb-3">Let AI be your Movie Guru!</h1>
         <p className="text-gray-400">Discover Family-Friendly Flicks for a Perfect Movie Night</p>
       </div>
-      <div className="px-4 md:px-12 py-3 sticky top-[68px]" style={{ background: `rgba(20, 20, 20, ${searchOpacity})` }}>
+      <div className="px-4 md:px-12 py-3 sticky top-[68px] z-[99999]" style={{ background: `rgba(20, 20, 20, ${searchOpacity})` }}>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">

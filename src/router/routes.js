@@ -5,6 +5,7 @@ export const PAGE = {
   SHOWS: '/tv-shows',
   MOVIES: '/movies',
   LATEST: '/latest',
+  WATCH: '/watch',
   SIGNIN: '/login',
   SIGNUP: '/signup',
   PROFILE: '/profile',

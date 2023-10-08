@@ -33,7 +33,7 @@ const Search = () => {
   return (
     <div className="search-page">
       <div className={`bg-skin w-full h-[430px] absolute top-0 z-10 bg-gradient-to-b from-indigo-800 to-[#141414] transition-colors`} style={{ opacity: `${skinOpacity}` }}></div>
-      <div className="search z-20 relative">
+      <div className="search relative">
         <GptSearchBar searchOpacity={searchOpacity} />
         <div className="mt-3 px-4 md:px-12 py-3 min-h-[700px]">
           <SearchResult />
