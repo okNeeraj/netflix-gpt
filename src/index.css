@@ -37,6 +37,53 @@
     @apply text-xl;
   }
 
+  .bg-shimmer {
+    /* @apply bg-slate-700; */
+    animation-duration: 3.6s;
+    animation-iteration-count: infinite;
+    animation-name: shimmerAnimation;
+    animation-timing-function: ease-in-out;
+  }
+
+  .bg-shimmer-wave {
+    animation-duration: 3.6s;
+    @apply bg-[#141414];
+    -webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
+    mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
+    -webkit-mask-size: 200% 100%;
+    mask-size: 200% 100%;
+    -webkit-animation: placeholder-wave 2s linear infinite;
+    animation: shimmerAnimation-wave 2s linear infinite;
+  }
+
+  @keyframes shimmerAnimation-wave {
+    100% {
+      mask-position: -200% 0%;
+    }
+  }
+
+  @keyframes shimmerAnimation {
+    0% {
+      background-color: #1a1a1a;
+    }
+
+    25% {
+      background-color: #333;
+    }
+
+    50% {
+      background-color: #1a1a1a;
+    }
+
+    100% {
+      background-color: #1a1a1a;
+    }
+  }
+
+  .moview-by-type {
+    background: linear-gradient(0deg, #141414 80%, transparent 100%);
+  }
+
   .trending-number {
     -webkit-text-stroke: 4px rgb(89, 89, 89);
     font-weight: bold;
