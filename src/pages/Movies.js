@@ -4,6 +4,7 @@ import useMovie from '../hooks/useMovie';
 import { SHOWCASE, MOVIES } from '../services/tmdb';
 import { useSelector } from 'react-redux';
 import useShowCase from '../hooks/useShowCase';
+import ShowcaseShimmer from '../components/ShowcaseShimmer';
 
 
 const Movies = () => {
@@ -35,7 +36,7 @@ const Movies = () => {
 
   return (
     <div className='broswe-page'>
-      {showCase && <Showcase data={showCase} />}
+      {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
         <MovieSlider heading="Bollywood Superstar" data={movies.bollywood} />
         <MovieSlider heading="Hollywood Movies" data={movies.hollywood} />
@@ -45,9 +46,6 @@ const Movies = () => {
         <MovieSlider heading="Indian Comedy Movies" data={movies.comedy} />
         <MovieSlider heading="Adventurus Movies" data={movies.adventure} />
         <MovieSlider heading="Popular In Animation" data={movies.animation} />
-        {/* <MovieSlider heading="Trending Now" data={trendings.trendingAll} />
-        <MovieSlider heading="Top Rated Movies" data={movies.topRated} />
-        <MovieSlider heading="Popular Movies" data={movies.popular} /> */}
       </div>
     </div>
   )

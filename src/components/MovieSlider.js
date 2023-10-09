@@ -24,7 +24,7 @@ const MovieSlider = ({ heading, data }) => {
       <h4 className='mb-3 text-[20px] text-[#e5e5e5]'>{heading}</h4>
       <Swiper
         slidesPerView={'auto'}
-        spaceBetween={15}
+        spaceBetween={16}
         slidesPerGroup={1}
         pagination={{
           clickable: true,

@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { TMDB_CDN_URL } from "../services/tmdb";
 import { createPortal } from "react-dom";
 import MovieCardHover from "./MovieCardHover";
-import { Link } from "react-router-dom";
 import { PAGE } from "../router/routes";
 
 const MovieCard = ({ data }) => {
@@ -52,13 +53,20 @@ const MovieCard = ({ data }) => {
       onMouseLeave={handleLeave}
       ref={cardRef}
     >
-      <Link to={`${PAGE.WATCH}/${id}`} target="_blank">
-        <img
-          src={`${TMDB_CDN_URL}/w400${poster_path}`}
-          alt={title}
-          className="w-full"
-        />
-      </Link>
+      <div className='movie-thumb aspect-[2/3] bg-shimmer'>
+        <Link to={`${PAGE.WATCH}/${id}`} target="_blank">
+          <LazyLoadImage src={`${TMDB_CDN_URL}/w400${poster_path}`}
+            // width={144} height={216}
+            alt={title}
+          />
+          {/* <img
+            src={`${TMDB_CDN_URL}/w400${poster_path}`}
+            alt={title}
+            className="w-full"
+            loading="lazy"
+          /> */}
+        </Link>
+      </div>
 
       {/* {title === 'The Creator' && */}
       {hovered && isLargeScreen &&

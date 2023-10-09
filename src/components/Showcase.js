@@ -4,22 +4,24 @@ import { PAGE } from '../router/routes';
 import { Link } from 'react-router-dom';
 
 const Showcase = ({ data }) => {
-  if (!data) return <div className='mt-24'></div>;
+  if (!data) return <div className='mt-16 md:mt-24 lg:mt-32 xl:mt-60'></div>;
   const { id, title, overview, backdrop_path, poster_path } = data?.info;
   const { results } = data?.videos
 
   const contentId = id;
 
+  console.log(data)
+
   return (
-    <div className={`showcase md:h-screen mt-[-70px] xl:h-auto xl:aspect-video bg-gradient-to-b from-slate-700 xl:mt-[-180pxL]`}>
+    <div className={`showcase md:h-screen mt-[-70px] xl:h-auto xl:aspect-video bg-gradient-to-b from-slate-700 xl:mt-[-180pxL] transition-all`}>
       <div className='w-full h-full w-96F h-96F relative'>
         <VideoBackground videos={results} backdrop={backdrop_path} poster={poster_path} title={title} />
         <div className='overlay h-full w-full z-10 relative'>
           {/* For Tablet and Desktop */}
           <div className='hidden md:flex bg-rrr w-full h-full items-center' style={{ background: 'linear-gradient(77deg,rgba(0,0,0,.8),transparent 85%)' }}>
-            <div className='px-4 md:px-12 w-full xl:w-3/4 text-white pt-[70px]'>
+            <div className='px-4 md:px-12 w-full xl:w-1/2 text-white pt-[0px]'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl mb-2 line-clamp-2 font-bold'>{title}</h1>
-              <p className='text-sm md:text-base line-clamp-4'>{overview}</p>
+              <p className='text-sm md:text-base line-clamp-2 md:line-clamp-2 xl:line-clamp-3'>{overview}</p>
               <div className='action flex gap-3 mt-4'>
                 <Link to={`${PAGE.WATCH}/${contentId}`} target="_blank" className='px-4 md:px-6 py-[5px] font-bold text-md bg-white text-black rounded-[4px] flex items-center justify-center gap-2'>
                   <span className='icon-fill text-[36px]'>play_arrow</span>

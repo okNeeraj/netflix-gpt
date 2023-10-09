@@ -6,6 +6,8 @@ import useTrending from '../hooks/useTrending';
 import { SHOWCASE, TRENDINGS, MOVIES } from '../services/tmdb';
 import { useSelector } from 'react-redux';
 import useShowCase from '../hooks/useShowCase';
+import ShowcaseShimmer from '../components/ShowcaseShimmer';
+import MovieSliderShimmer from '../components/MovieSliderShimmer';
 
 const Browse = () => {
   const { landingPage, tvShow, movie, latest } = SHOWCASE;
@@ -28,7 +30,6 @@ const Browse = () => {
   useMovie(nowPlaying.endpoint, nowPlaying.type);
   useMovie(topRated.endpoint, topRated.type);
   useMovie(popular.endpoint, popular.type);
-  useMovie(popular.endpoint, popular.type);
   useMovie(popular.endpoint, 'bollywood', null, 'hi');
 
   /**
@@ -38,23 +39,20 @@ const Browse = () => {
    * @useMovies 
    */
 
-  const showCase = useSelector((store) => store.showCase.landingPage);
-  const trendings = useSelector((store) => store.trendings);
-  const movies = useSelector((store) => store.movies);
-
-  if (!movies && !showCase) return;
+  const showCase = useSelector((store) => store?.showCase?.landingPage);
+  const trendings = useSelector((store) => store?.trendings);
+  const movies = useSelector((store) => store?.movies);
 
   return (
     <div className='broswe-page'>
-      {showCase && <Showcase data={showCase} />}
+      {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
-        {movies.nowPlaying && <MovieSlider heading="Now Playing" data={movies.nowPlaying} />}
-        {trendings.popular && <MovieSlider heading="Trending Now" data={trendings.popular} />}
-        {trendings.trendingMovies && <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} />}
-        {movies.bollywood && <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} />}
-        {movies.topRated && <MovieSlider heading="Top Rated Movies" data={movies.topRated} />}
-        {trendings.trendingTv && <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} />}
-        {movies.popular && <MovieSlider heading="Popular Movies" data={movies.popular} />}
+        {movies.nowPlaying ? <MovieSlider heading="Now Playing" data={movies.nowPlaying} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
+        {trendings.trendingMovies ? <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} /> : <MovieSliderShimmer dimention={'w-52 h-[200px]'} />}
+        {movies.bollywood ? <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
+        {movies.topRated ? <MovieSlider heading="Top Rated Movies" data={movies.topRated} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
+        {trendings.trendingTv ? <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} /> : <MovieSliderShimmer dimention={'w-52 h-[200px]'} />}
+        {movies.popular ? <MovieSlider heading="Popular Movies" data={movies.popular} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
       </div>
     </div>
   )
