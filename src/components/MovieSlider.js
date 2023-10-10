@@ -37,7 +37,7 @@ const MovieSlider = ({ heading, data }) => {
         {
           movies.map((movie) => (
             <SwiperSlide key={movie.id} className='cursor-pointer flex-grow-0 flex-shrink-0 w-28 md:w-36 overflow-hidden rounded'>
-              <MovieCard data={movie} />
+              {<MovieCard data={movie} />}
             </SwiperSlide>)
           )
         }

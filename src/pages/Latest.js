@@ -11,7 +11,7 @@ const Latest = () => {
   const { popular } = MOVIES;
 
   // Fetch movies and set to Redux Store
-  useShowCase(latest.endpoint, latest.type, null, 'hi', 0);
+  useShowCase(latest.endpoint, latest.type, null, 'hi', 4);
 
   useMovie(popular.endpoint, 'latest', null, 'hi');
 
