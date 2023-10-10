@@ -80,6 +80,14 @@
     }
   }
 
+  .trending-card {
+    transition: 0.3s;
+  }
+
+  .trending-card:hover {
+    transform: scale(1.2);
+  }
+
   .moview-by-type {
     background: linear-gradient(0deg, #141414 80%, transparent 100%);
   }
@@ -91,6 +99,7 @@
     color: #000;
     line-height: 200px;
   }
+
 
   .movie-hovered {
     display: none;

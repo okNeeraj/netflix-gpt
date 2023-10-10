@@ -21,7 +21,7 @@ const MovieCard = ({ data }) => {
       left: triggerRect.left,
       right: positionFromRight,
       top: offsetFromTop,
-      bottom: offsetFromTop
+      bottom: offsetFromTop,
     });
   };
 
@@ -54,7 +54,7 @@ const MovieCard = ({ data }) => {
       ref={cardRef}
     >
       <div className='movie-thumb aspect-[2/3] bg-shimmer'>
-        <Link to={`${PAGE.WATCH}/${id}`} target="_blank">
+        <Link to={`${PAGE.WATCH}/${id}`}>
           <LazyLoadImage src={`${TMDB_CDN_URL}/w400${poster_path}`}
             // width={144} height={216}
             alt={title}

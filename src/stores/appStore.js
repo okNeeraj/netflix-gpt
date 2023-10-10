@@ -5,6 +5,7 @@ import moviesReducer from "./moviesSlice";
 import trendingReducer from "./trendingSlice";
 import searchReducer from "./searchSlice";
 import showCaseReducer from "./showCaseSlice";
+import playerReducer from "./playerSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ const appStore = configureStore({
     movies: moviesReducer,
     trendings: trendingReducer,
     search: searchReducer,
-    showCase: showCaseReducer
+    showCase: showCaseReducer,
+    player: playerReducer,
   }
 });
 

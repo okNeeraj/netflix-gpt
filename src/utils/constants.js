@@ -1,7 +1,8 @@
-export const LOGO_ICON = "./netflix-gpt.png";
-export const LOGO_RED = "./ngpt-red-300x71.png";
-export const LOGO_WHITE = "./ngpt-white-300x71.png";
-export const POSTER_BG = "./poster-bg.jpeg";
-export const BACKDROP = "./blur.png";
-export const AVATAR_RED = "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
-export const AVATAR_BLUE = "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg";
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const LOGO_ICON = `${BASE_URL}/netflix-gpt.png`;
+export const LOGO_RED = `${BASE_URL}/ngpt-red-300x71.png`;
+export const LOGO_WHITE = `${BASE_URL}/ngpt-white-300x71.png`;
+export const POSTER_BG = `${BASE_URL}/poster-bg.jpeg`;
+export const BACKDROP = `${BASE_URL}/blur.png`;
+export const AVATAR_RED = "avatar-red.jpeg";
+export const AVATAR_BLUE = "avatar-blue.jpeg";
