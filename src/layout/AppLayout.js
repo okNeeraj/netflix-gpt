@@ -10,7 +10,7 @@ const AppLayout = ({ children }) => {
 
   return (
     <>
-      {!isWatchPage && <Navbar />}
+      <Navbar />
       <main className={`page-body min-h-screen text-gray-500 ${isWatchPage ? '' : 'pt-[70px]'}`}>
         {children}
       </main>

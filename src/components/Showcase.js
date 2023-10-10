@@ -7,10 +7,7 @@ const Showcase = ({ data }) => {
   if (!data) return <div className='mt-16 md:mt-24 lg:mt-32 xl:mt-60'></div>;
   const { id, title, overview, backdrop_path, poster_path } = data?.info;
   const { results } = data?.videos
-
   const contentId = id;
-
-  console.log(data)
 
   return (
     <div className={`showcase md:h-screen mt-[-70px] xl:h-auto xl:aspect-video bg-gradient-to-b from-slate-700 xl:mt-[-180pxL] transition-all`}>
@@ -23,7 +20,7 @@ const Showcase = ({ data }) => {
               <h1 className='text-4xl md:text-5xl lg:text-6xl mb-2 line-clamp-2 font-bold'>{title}</h1>
               <p className='text-sm md:text-base line-clamp-2 md:line-clamp-2 xl:line-clamp-3'>{overview}</p>
               <div className='action flex gap-3 mt-4'>
-                <Link to={`${PAGE.WATCH}/${contentId}`} target="_blank" className='px-4 md:px-6 py-[5px] font-bold text-md bg-white text-black rounded-[4px] flex items-center justify-center gap-2'>
+                <Link to={`${PAGE.WATCH}/${contentId}`} className='px-4 md:px-6 py-[5px] font-bold text-md bg-white text-black rounded-[4px] flex items-center justify-center gap-2'>
                   <span className='icon-fill text-[36px]'>play_arrow</span>
                   <span>Play</span>
                 </Link>
@@ -46,10 +43,10 @@ const Showcase = ({ data }) => {
                   <h1 className='text-2xl font-bold md:text-5xl lg:text-6xl mb-2'>{title}</h1>
                   <p className='text-xs md:text-base line-clamp-2'>{overview}</p>
                   <div className='action flex items-center justify-center gap-3 mt-4'>
-                    <button className='px-4 md:px-6 py-[5px] font-bold text-sm bg-white text-black rounded-[4px] flex items-center justify-center gap-2'>
+                    <Link to={`${PAGE.WATCH}/${contentId}`} className='px-4 md:px-6 py-[5px] font-bold text-sm bg-white text-black rounded-[4px] flex items-center justify-center gap-2'>
                       <span className='icon-fill text-[30px] md:text-[36px]'>play_arrow</span>
                       <span>Play</span>
-                    </button>
+                    </Link>
                     <button className='px-4 md:px-6 py-[5px] font-bold text-sm rounded-[4px] flex items-center justify-center gap-2' style={{ background: 'rgba(109, 109, 110, 0.7)' }}>
                       <span className='icon-line text-[30px] md:text-[36px]'>info</span>
                       <span>More Info</span>
