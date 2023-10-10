@@ -5,6 +5,7 @@ import { TMDB_CDN_URL } from "../services/tmdb";
 import { createPortal } from "react-dom";
 import MovieCardHover from "./MovieCardHover";
 import { PAGE } from "../router/routes";
+import { NO_POSTER } from "../utils/constants";
 
 const MovieCard = ({ data }) => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -43,8 +44,7 @@ const MovieCard = ({ data }) => {
 
   if (data === null) return null;
 
-  const { id, title, poster_path } = data;
-  if (!poster_path) return null;
+  const { id, title, poster_path, backdrop_path } = data;
 
   return (
     <div
@@ -55,16 +55,16 @@ const MovieCard = ({ data }) => {
     >
       <div className='movie-thumb aspect-[2/3] bg-shimmer'>
         <Link to={`${PAGE.WATCH}/${id}`}>
-          <LazyLoadImage src={`${TMDB_CDN_URL}/w400${poster_path}`}
+          <LazyLoadImage src={
+            poster_path !== null
+              ? `${TMDB_CDN_URL}/w400${poster_path}`
+              : backdrop_path !== null
+                ? `${TMDB_CDN_URL}/w400${backdrop_path}`
+                : NO_POSTER  // Replace with the path to your dummy image
+          }
             // width={144} height={216}
             alt={title}
           />
-          {/* <img
-            src={`${TMDB_CDN_URL}/w400${poster_path}`}
-            alt={title}
-            className="w-full"
-            loading="lazy"
-          /> */}
         </Link>
       </div>
 

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { PAGE } from "../router/routes";
 import { TMDB_CDN_URL } from "../services/tmdb";
+import { NO_POSTER } from "../utils/constants";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const MovieCardHover = ({ data, centerPosition, hovered }) => {
   const { id, title, poster_path, backdrop_path, release_date } = data;
@@ -29,8 +31,14 @@ const MovieCardHover = ({ data, centerPosition, hovered }) => {
       <div className="hover-container bg-[#141414] shadow-md shadow-slate-950 m-2 rounded-md overflow-hidden">
         <div className='h-40 w-full bg-gray-700'>
           <Link to={`${PAGE.WATCH}/${id}`} target="_blank" className='inline-block w-full h-full'>
-            <img
-              src={backdrop_path ? `${TMDB_CDN_URL}/w400${poster_path}` : `${TMDB_CDN_URL}/w400${poster_path}`}
+            <LazyLoadImage
+              src={
+                poster_path !== null
+                  ? `${TMDB_CDN_URL}/w400${poster_path}`
+                  : backdrop_path !== null
+                    ? `${TMDB_CDN_URL}/w400${backdrop_path}`
+                    : NO_POSTER
+              }
               alt={title}
               className="w-full h-full object-cover" />
           </Link>
