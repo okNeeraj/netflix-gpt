@@ -1,10 +1,12 @@
 import { useState } from "react"
 import openai from "../services/openai";
 import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setGptSearch } from "../stores/searchSlice";
 
 const GptSearchBar = ({ searchOpacity }) => {
+  const userEmail = useSelector((store) => store?.user?.email);
+  const [user, setUser] = useState(userEmail)
   const [loadingBtn, setLoadingBtn] = useState(false);
   const [searchPrompt, setSearchPrompt] = useState('');
   const dispatch = useDispatch();
@@ -29,29 +31,42 @@ const GptSearchBar = ({ searchOpacity }) => {
 
   const handleSearch = async () => {
     setLoadingBtn(true);
-    try {
-      const prompt = `
-      Act as a movie recommendation system and suggest some movies for the query : ${searchPrompt}.
-      Only give me name of 5 movies with comma seperated.
-      result should always look like - Spider Man, Elemental, Phir Hera Pheri
-    `
-      const gptResponse = await openai.chat.completions.create({
-        messages: [{ role: 'user', content: prompt }],
-        model: 'gpt-3.5-turbo',
-      });
+    if (user === 'gpt@gmail.com') {
+      try {
+        const prompt = `
+        Act as a movie recommendation system and suggest some movies for the query : ${searchPrompt}.
+        Only give me name of 5 movies with comma seperated.
+        result should always look like - Spider Man, Elemental, Phir Hera Pheri
+      `
+        const gptResponse = await openai.chat.completions.create({
+          messages: [{ role: 'user', content: prompt }],
+          model: 'gpt-3.5-turbo',
+        });
 
-      const gptResults = gptResponse?.choices[0]?.message?.content.split(", ")
-      const data = gptResults.map((query) => searchMovies('movie', query));
+        const gptResults = gptResponse?.choices[0]?.message?.content.split(", ")
+        const data = gptResults.map((query) => searchMovies('movie', query));
+        const searchResults = await Promise.all(data);
+
+        if (searchResults) {
+          setLoadingBtn(false)
+        }
+
+        dispatch(setGptSearch({ searchResults: gptResults, actionType: 'gptResults' }))
+        dispatch(setGptSearch({ searchResults: searchResults, actionType: 'movies' }))
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    } else { // GPT will not work for all user
+      const searchTerm = [searchPrompt];
+      const data = searchTerm.map((query) => searchMovies('movie', query));
       const searchResults = await Promise.all(data);
 
       if (searchResults) {
         setLoadingBtn(false)
       }
 
-      dispatch(setGptSearch({ searchResults: gptResults, actionType: 'gptResults' }))
+      dispatch(setGptSearch({ searchResults: searchTerm, actionType: 'gptResults' }))
       dispatch(setGptSearch({ searchResults: searchResults, actionType: 'movies' }))
-    } catch (error) {
-      console.error('Error:', error);
     }
   }
 
