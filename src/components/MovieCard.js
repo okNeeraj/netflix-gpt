@@ -10,33 +10,46 @@ import { NO_POSTER } from "../utils/constants";
 const MovieCard = ({ data }) => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const cardRef = useRef(null);
   const [centerPosition, setCenterPosition] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
 
+
   const handleHover = () => {
-    setHovered(true);
-    const triggerRect = cardRef.current.getBoundingClientRect();
-    const offsetFromTop = triggerRect.top + window.scrollY;
-    const positionFromRight = window.innerWidth - triggerRect.right;
-    setCenterPosition({
-      left: triggerRect.left,
-      right: positionFromRight,
-      top: offsetFromTop,
-      bottom: offsetFromTop,
-    });
+    if (data !== null) {
+      clearTimeout(hoverTimeout);
+
+      hoverTimeout = setTimeout(() => {
+        setHovered(true);
+        if (cardRef.current) {
+          const triggerRect = cardRef.current.getBoundingClientRect();
+          const offsetFromTop = triggerRect.top + window.scrollY;
+          const positionFromRight = window.innerWidth - triggerRect.right;
+          setCenterPosition({
+            left: triggerRect.left,
+            right: positionFromRight,
+            top: offsetFromTop,
+            bottom: offsetFromTop,
+          });
+        }
+      }, 1000);
+    }
   };
 
   const handleLeave = () => {
+    clearTimeout(hoverTimeout);
     setHovered(false);
   };
 
-  const handleResize = () => {
-    setIsLargeScreen(window.innerWidth > 1024);
-  };
+  let hoverTimeout;
+  const cardRef = useRef(null);
 
   useEffect(() => {
-    handleResize();
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1024);
+    };
+
     window.addEventListener('resize', handleResize);
+    handleResize(); // Initialize isLargeScreen
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -79,6 +92,19 @@ const MovieCard = ({ data }) => {
   );
 };
 
+export const WithTrending = (MovieCard) => {
+  return (props) => {
+    const { index } = props;
+    return (
+      <div className="trending-card relative">
+        <div className="text-[200px] trending-number w-full h-full flex justify-start items-center absolute left-0">{index}</div>
+        <div className='w-32 ml-auto relative z-10'>
+          <MovieCard {...props} />
+        </div>
+      </div>
+    )
+  }
+}
 
 
 export default MovieCard;

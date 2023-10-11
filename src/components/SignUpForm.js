@@ -28,8 +28,19 @@ const SignUpForm = () => {
 
     // Send provided credential to server for validation
     const userCredential = await register(emailPhone.current.value, password.current.value);
-    setAuthError(userCredential?.error?.message);
+    let errorMessage = null;
+    switch (userCredential?.error?.code) {
+      case "auth/email-already-in-use":
+        errorMessage = "Email you provided is already registered."
+        break;
+
+      default:
+        errorMessage = "Something went wrong with your credentials."
+        break;
+    }
+    setAuthError(errorMessage);
     setLoadingBtn(false);
+
     if (userCredential?.error) return;
 
     const { uid, displayName, email, photoURL, phoneNumber } = userCredential.user;
