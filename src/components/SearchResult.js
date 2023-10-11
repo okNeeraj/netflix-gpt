@@ -7,6 +7,7 @@ const SearchResult = () => {
 
   return (
     <>
+      {/* <MovieSlider heading={searchTerm} data={movies} /> */}
       {gptResults.map((title, index) => <MovieSlider key={title} heading={title} data={movies[index]} />)}
     </>
   )

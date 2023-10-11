@@ -1,7 +1,7 @@
 export const PAGE = {
   HOME: '/',
   BROWSE: '/browse',
-  SEARCH: '/movie-assistant',
+  SEARCH: '/search',
   SHOWS: '/tv-shows',
   MOVIES: '/movies',
   LATEST: '/latest',
