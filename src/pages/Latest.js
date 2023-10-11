@@ -5,6 +5,7 @@ import MovieSlider from "../components/MovieSlider";
 import { MOVIES, SHOWCASE } from "../services/tmdb";
 import useShowCase from "../hooks/useShowCase";
 import ShowcaseShimmer from "../components/ShowcaseShimmer";
+import MovieSliderShimmer from "../components/MovieSliderShimmer";
 
 const Latest = () => {
   const { latest } = SHOWCASE;
@@ -24,7 +25,13 @@ const Latest = () => {
     <div className='broswe-page'>
       {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
-        <MovieSlider heading="Latest Release" data={movies.latest} />
+        {
+          movies.latest ? (
+            <MovieSlider heading="Latest Release" data={movies.latest} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
       </div>
     </div>
   )

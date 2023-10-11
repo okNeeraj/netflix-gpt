@@ -5,12 +5,14 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import MovieCard from "./MovieCard"
+import MovieCard, { WithTrending } from './MovieCard';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MovieSlider = ({ heading, data }) => {
+const MovieSlider = ({ type, heading, data }) => {
   const [slidesPerGroup, setSlidesPerGroup] = useState(2);
+  const TrendingMovieCard = WithTrending(MovieCard);
+
   const handleResize = () => {
     const slidesInView = Math.floor(window.innerWidth / 144);  // Adjust 200 to your slide width
     setSlidesPerGroup(slidesInView);
@@ -35,9 +37,9 @@ const MovieSlider = ({ heading, data }) => {
         className="mySwiper flex overflow-visibleF"
       >
         {
-          movies.map((movie) => (
-            <SwiperSlide key={movie.id} className='cursor-pointer flex-grow-0 flex-shrink-0 w-28 md:w-36 overflow-hidden rounded'>
-              {<MovieCard data={movie} />}
+          movies.map((movie, index) => (
+            <SwiperSlide key={movie.id} className={`${type === 'trending' ? 'w-52' : 'w-28 md:w-36'} cursor-pointer flex-grow-0 flex-shrink-0 overflow-hidden rounded`}>
+              {type === 'trending' ? <TrendingMovieCard index={index + 1} data={movie} /> : <MovieCard data={movie} />}
             </SwiperSlide>)
           )
         }

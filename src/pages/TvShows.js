@@ -5,6 +5,7 @@ import Showcase from "../components/Showcase";
 import MovieSlider from "../components/MovieSlider";
 import useShowCase from "../hooks/useShowCase";
 import ShowcaseShimmer from "../components/ShowcaseShimmer";
+import MovieSliderShimmer from "../components/MovieSliderShimmer";
 
 const TvShows = () => {
   const { tvShow } = SHOWCASE;
@@ -25,8 +26,21 @@ const TvShows = () => {
     <div className='broswe-page'>
       {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
-        <MovieSlider heading="Tv Show in India" data={movies.tvShowIndia} />
-        <MovieSlider heading="International Tv Show" data={movies.tvShowInternationl} />
+        {
+          movies.tvShowIndia ? (
+            <MovieSlider heading="Tv Show in India" data={movies.tvShowIndia} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.tvShowInternationl ? (
+            <MovieSlider heading="International Tv Show" data={movies.tvShowInternationl} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
       </div>
     </div>
   )

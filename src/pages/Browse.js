@@ -1,6 +1,5 @@
 import Showcase from '../components/Showcase';
 import MovieSlider from '../components/MovieSlider';
-import TrendingSlider from '../components/TrendingSlider';
 import useMovie from '../hooks/useMovie';
 import useTrending from '../hooks/useTrending';
 import { SHOWCASE, TRENDINGS, MOVIES } from '../services/tmdb';
@@ -10,7 +9,7 @@ import ShowcaseShimmer from '../components/ShowcaseShimmer';
 import MovieSliderShimmer from '../components/MovieSliderShimmer';
 
 const Browse = () => {
-  const { landingPage, tvShow, movie, latest } = SHOWCASE;
+  const { landingPage } = SHOWCASE;
   const { trendingAll, trendingTv, trendingMovies } = TRENDINGS;
   const { nowPlaying, popular, topRated } = MOVIES;
 
@@ -47,12 +46,57 @@ const Browse = () => {
     <div className='broswe-page'>
       {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
-        {movies.nowPlaying ? <MovieSlider heading="Now Playing" data={movies.nowPlaying} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
-        {trendings.trendingMovies ? <TrendingSlider heading="Top 10 Trending Movies" data={trendings.trendingMovies} /> : <MovieSliderShimmer dimention={'w-52 h-[200px]'} />}
-        {movies.bollywood ? <MovieSlider heading="Now Playing Bollywood Movies" data={movies.bollywood} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
-        {movies.topRated ? <MovieSlider heading="Top Rated Movies" data={movies.topRated} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
-        {trendings.trendingTv ? <TrendingSlider heading="Top 10 TV Shows in India" data={trendings.trendingTv} /> : <MovieSliderShimmer dimention={'w-52 h-[200px]'} />}
-        {movies.popular ? <MovieSlider heading="Popular Movies" data={movies.popular} /> : <MovieSliderShimmer dimention={'w-28 md:w-36'} />}
+        {
+          movies.nowPlaying ? (
+            <MovieSlider type={null} heading="Now Playing" data={movies.nowPlaying} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          trendings.trendingMovies ? (
+            <MovieSlider
+              type="trending"
+              heading="Top 10 Trending Movies"
+              data={trendings.trendingMovies}
+            />
+          ) : (
+            <MovieSliderShimmer dimention={'w-52 h-[200px]'} />
+          )
+        }
+
+        {
+          movies.bollywood ? (
+            <MovieSlider type={null} heading="Now Playing Bollywood Movies" data={movies.bollywood} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.topRated ? (
+            <MovieSlider type={null} heading="Top Rated Movies" data={movies.topRated} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          trendings.trendingTv ? (
+            <MovieSlider type="trending" heading="Top 10 TV Shows in India" data={trendings.trendingTv} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-52 h-[200px]'} />
+          )
+        }
+
+        {
+          movies.popular ? (
+            <MovieSlider type={null} heading="Popular Movies" data={movies.popular} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { SHOWCASE, MOVIES } from '../services/tmdb';
 import { useSelector } from 'react-redux';
 import useShowCase from '../hooks/useShowCase';
 import ShowcaseShimmer from '../components/ShowcaseShimmer';
+import MovieSliderShimmer from '../components/MovieSliderShimmer';
 
 
 const Movies = () => {
@@ -38,14 +39,69 @@ const Movies = () => {
     <div className='broswe-page'>
       {showCase ? <Showcase data={showCase} /> : <ShowcaseShimmer />}
       <div className='moview-by-type px-4 md:px-12 md:mt-[-10%] xl:mt-[-15%] z-50 relative'>
-        <MovieSlider heading="Bollywood Superstar" data={movies.bollywood} />
-        <MovieSlider heading="Hollywood Movies" data={movies.hollywood} />
-        <MovieSlider heading="Action Thriller" data={movies.thriller} />
-        <MovieSlider heading="Romantic Movies" data={movies.romance} />
-        <MovieSlider heading="Scary Movies" data={movies.horror} />
-        <MovieSlider heading="Indian Comedy Movies" data={movies.comedy} />
-        <MovieSlider heading="Adventurus Movies" data={movies.adventure} />
-        <MovieSlider heading="Popular In Animation" data={movies.animation} />
+        {
+          movies.bollywood ? (
+            <MovieSlider heading="Bollywood Superstar" data={movies.bollywood} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.hollywood ? (
+            <MovieSlider heading="Hollywood Movies" data={movies.hollywood} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.thriller ? (
+            <MovieSlider heading="Action Thriller" data={movies.thriller} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.romance ? (
+            <MovieSlider heading="Romantic Movies" data={movies.romance} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.horror ? (
+            <MovieSlider heading="Scary Movies" data={movies.horror} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.comedy ? (
+            <MovieSlider heading="Indian Comedy Movies" data={movies.comedy} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.adventure ? (
+            <MovieSlider heading="Adventurus Movies" data={movies.adventure} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
+
+        {
+          movies.animation ? (
+            <MovieSlider heading="Popular In Animation" data={movies.animation} />
+          ) : (
+            <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+          )
+        }
       </div>
     </div>
   )
