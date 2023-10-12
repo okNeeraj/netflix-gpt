@@ -3,9 +3,12 @@ import { PAGE } from "../router/routes";
 import { TMDB_CDN_URL } from "../services/tmdb";
 import { NO_POSTER } from "../utils/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import getGenresName from "../utils/getGenresName";
+import GenreList from "./GenreList";
 
 const MovieCardHover = ({ data, centerPosition, hovered }) => {
-  const { id, title, poster_path, backdrop_path, release_date } = data;
+  const { id, title, poster_path, backdrop_path, release_date, genre_ids, vote_average } = data;
+  const genres = getGenresName(genre_ids);
 
   const releaseYear = release_date && release_date.split("-")[0];
 
@@ -64,13 +67,25 @@ const MovieCardHover = ({ data, centerPosition, hovered }) => {
 
           <div className='mt-6'>
             <h4 className='text-white text-md'>{title}</h4>
-            <p className='text-sm mt-3'>{releaseYear}</p>
+            <div className='mt-3'>
+              <div className='text-sm'>
+                <span className='font-bold text-green-500'>{vote_average} Rating</span>
+                <span className='text-gray-400 ml-3'>{releaseYear}</span>
+              </div>
+              <div className='genres mt-3 [&>*:last-child]:after:content-none text-gray-400'>
+                {
+                  genres.map((genre) => (
+                    <GenreList key={genre} genre={genre} />
+                  ))
+                }
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
+    </div >
   );
 };
+
 
 export default MovieCardHover;

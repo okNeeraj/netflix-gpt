@@ -10,13 +10,13 @@ const Footer = () => {
           </a>
           <ul className="flex flex-wrap items-center mb-2 text-sm font-medium text-gray-500">
             <li>
-              <a href="#!" className="mr-4 hover:underline md:mr-6">About</a>
+              <a href="https://www.linkedin.com/in/okneerajsingh/" target='_blank' rel='noreferrer' className="mr-4 hover:underline md:mr-6">About</a>
             </li>
             <li>
               <a href="#!" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
             </li>
             <li>
-              <a href="#!" className="hover:underline">Contact</a>
+              <a href="https://www.linkedin.com/in/okneerajsingh/" target='_blank' rel='noreferrer' className="hover:underline">Contact</a>
             </li>
           </ul>
         </div>
