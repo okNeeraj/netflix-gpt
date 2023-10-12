@@ -66,7 +66,7 @@ const MovieCard = ({ data }) => {
       onMouseLeave={handleLeave}
       ref={cardRef}
     >
-      <div className='movie-thumb aspect-[2/3] bg-shimmer'>
+      <div className='movie-thumb aspect-[2/3] bg-shimmer overflow-hidden rounded'>
         <Link to={`${PAGE.WATCH}/${id}`}>
           <LazyLoadImage src={
             poster_path !== null
@@ -76,6 +76,7 @@ const MovieCard = ({ data }) => {
                 : NO_POSTER  // Replace with the path to your dummy image
           }
             // width={144} height={216}
+            className='hover:scale-110' style={{ transition: '0.9s' }}
             alt={title}
           />
         </Link>
