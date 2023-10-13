@@ -9,4 +9,5 @@ export const PAGE = {
   SIGNIN: '/login',
   SIGNUP: '/signup',
   PROFILE: '/profile',
+  ABOUT: '/about',
 }

@@ -77,25 +77,25 @@ npm start
 ## Screen Shot
 
 - Landing Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/01-Landing.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/01-Landing.png)
 
 - Signin Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/02-Signin.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/02-Signin.png)
 
 - Signup Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/03-Signup.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/03-Signup.png)
 
 - Browse Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/04-Browse.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/04-Browse.png)
 
 - Movie List
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/05-Movie-List.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/05-Movie-List.png)
 
 - Shimmer Loading
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/06-Shimmer-loading.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/06-Shimmer-loading.png)
 
 - Search Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/07-Search.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/07-Search.png)
 
 - Watch Now Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/08-Watch.png)
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/08-Watch.png)
