@@ -73,3 +73,29 @@ npm start
 - NetflixGPT
   - Search
   - MoviesSuggestion
+
+## Screen Shot
+
+- Landing Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/01-Landing.png)
+
+- Signin Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/02-Signin.png)
+
+- Signup Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/03-Signup.png)
+
+- Browse Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/04-Browse.png)
+
+- Movie List
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/05-Movie-List.png)
+
+- Shimmer Loading
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/06-Shimmer-loading.png)
+
+- Search Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/07-Search.png)
+
+- Watch Now Page
+  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/08-Watch.png)

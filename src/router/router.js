@@ -1,5 +1,5 @@
 import { createBrowserRouter, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import App from '../App';
 import Home from '../pages/Home';
@@ -14,6 +14,7 @@ import Spinner from "../components/Spinner";
 import Movies from "../pages/Movies";
 import Latest from "../pages/Latest";
 import Watch from "../pages/Watch";
+import About from "../pages/About";
 
 const RouteType = ({ children, type }) => {
   const isLogged = useSelector((store) => store.authenticated);
@@ -83,8 +84,11 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <RouteType type="private"><Profile /></RouteType>
+      },
+      {
+        path: '/about',
+        element: <RouteType type="global"><About /></RouteType>
       }
-
     ]
   }
 ]);
