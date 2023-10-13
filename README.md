@@ -76,26 +76,54 @@ npm start
 
 ## Screen Shot
 
+Live Demo : [Live Demo](https://8ttribute.com "Live Demo")
+
+## Screen Shot
+
 - Landing Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/01-Landing.png)
+
+  ![Landing Page](https://netflixgpt-aaf25.web.app/screenshot/01-Landing.png)
 
 - Signin Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/02-Signin.png)
+
+  ![Signin Page](https://netflixgpt-aaf25.web.app/screenshot/02-Signin.png)
 
 - Signup Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/03-Signup.png)
+
+  ![Signup Page](https://netflixgpt-aaf25.web.app/screenshot/03-Signup.png)
 
 - Browse Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/04-Browse.png)
+
+  ![Browse Page](https://netflixgpt-aaf25.web.app/screenshot/04-Browse.png)
 
 - Movie List
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/05-Movie-List.png)
+
+  ![Movie List](https://netflixgpt-aaf25.web.app/screenshot/05-Movie-List.png)
 
 - Shimmer Loading
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/06-Shimmer-loading.png)
+
+  ![Shimmer Loading](https://netflixgpt-aaf25.web.app/screenshot/06-Shimmer-loading.png)
 
 - Search Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/07-Search.png)
+
+  ![Search Page](https://netflixgpt-aaf25.web.app/screenshot/07-Search.png)
 
 - Watch Now Page
-  ![ALTTEXT](https://netflixgpt-aaf25.web.app/screenshot/08-Watch.png)
+
+  ![Watch Now Page](https://netflixgpt-aaf25.web.app/screenshot/08-Watch.png)
+
+# 💖 Support This Project
+
+Thank you for taking the time to explore NetflixGPT! This project represents an in-depth implementation of features extracted from the inspiring course "Namaste-React" by Akshay Saini. It's been a rewarding journey, and I'm genuinely grateful for the opportunity to create and share this with the community.
+
+I want to express my heartfelt thanks to everyone who has shown interest and provided feedback. Your support and involvement mean a lot to me.
+
+If you have any questions, suggestions, or just want to connect, feel free to reach out.
+
+`<Happy coding />`
+
+## 🙏 Thank You 🙏
+
+Feel free to modify it to suit the tone and style of your project. The goal is to encourage participation, collaboration and learning.
+
+Made with ❤️ and React.
