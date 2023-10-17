@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setApp } from '../stores/appSlice';
 import getGenresName from '../utils/getGenresName';
 import GenreList from './GenreList';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const Showcase = ({ data }) => {
   const isMuted = useSelector((store) => store.app.isMuted);
@@ -24,7 +25,9 @@ const Showcase = ({ data }) => {
   return (
     <div className={`showcase md:h-screen mt-[-70px] xl:h-auto xl:aspect-video bg-gradient-to-b from-slate-700 xl:mt-[-180pxL] transition-all`}>
       <div className='w-full h-full w-96F h-96F relative'>
-        <VideoBackground videos={results} backdrop={backdrop_path} poster={poster_path} title={title} />
+        <LazyLoadComponent>
+          <VideoBackground videos={results} backdrop={backdrop_path} poster={poster_path} title={title} />
+        </LazyLoadComponent>
         <div className='overlay h-full w-full z-10 relative'>
           {/* For Tablet and Desktop */}
           <div className='hidden md:flex bg-rrr w-full h-full items-end pb-[20%]' style={{ background: 'linear-gradient(77deg,rgba(0,0,0,.8),transparent 85%)' }}>

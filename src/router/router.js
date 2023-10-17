@@ -1,20 +1,36 @@
 import { createBrowserRouter, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import App from '../App';
-import Home from '../pages/Home';
-import Browse from '../pages/Browse';
-import Search from '../pages/Search';
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
-import Profile from "../pages/Profile";
+import loadable from '@loadable/component'
 import { PAGE } from "./routes";
-import TvShows from "../pages/TvShows";
 import Spinner from "../components/Spinner";
-import Movies from "../pages/Movies";
+
+// import App from '../App';
+// import Home from '../pages/Home';
+// import Browse from '../pages/Browse';
+// import Search from '../pages/Search';
+// import SignIn from '../pages/SignIn';
+// import SignUp from '../pages/SignUp';
+// import Profile from "../pages/Profile";
+// import TvShows from "../pages/TvShows";
+// import Movies from "../pages/Movies";
 import Latest from "../pages/Latest";
-import Watch from "../pages/Watch";
-import About from "../pages/About";
+// import Watch from "../pages/Watch";
+// import About from "../pages/About";
+
+const App = loadable(() => import('../App'));
+const Home = loadable(() => import('../pages/Home'));
+const Browse = loadable(() => import('../pages/Browse'));
+const Search = loadable(() => import('../pages/Search'));
+const SignIn = loadable(() => import('../pages/SignIn'));
+const SignUp = loadable(() => import('../pages/SignUp'));
+const Profile = loadable(() => import('../pages/Profile'));
+const TvShows = loadable(() => import('../pages/TvShows'));
+const Movies = loadable(() => import('../pages/Movies'));
+// const Latest = loadable(() => import('../pages/Latest'));
+const Watch = loadable(() => import('../pages/Watch'));
+const About = loadable(() => import('../pages/About'));
+
 
 const RouteType = ({ children, type }) => {
   const isLogged = useSelector((store) => store.authenticated);

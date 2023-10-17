@@ -80,7 +80,7 @@ const GptSearchBar = ({ searchOpacity }) => {
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">
-              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>search</span>
+              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-6 hidden md:block'>search</span>
               <input
                 type="text"
                 placeholder="Search Movies, Show and more"
@@ -89,7 +89,7 @@ const GptSearchBar = ({ searchOpacity }) => {
                 value={searchPrompt}
               />
 
-              {searchPrompt && <span className='icon-fill text-[28px] mt-1 md:text-[36px] absolute right-4 top-3 md:top-4 cursor-pointer' onClick={handleClearPrompt}>close</span>}
+              {searchPrompt && <span className='icon-fill text-[28px] mt-1 md:text-[36px] absolute right-4 top-3 md:top-6 cursor-pointer' onClick={handleClearPrompt}>close</span>}
             </div>
             <button
               className={`py-4 md:py-6 w-24 px-2 md:px-5 flex items-center justify-center bg-red-primary rounded text-white disabled:bg-red-800`}

@@ -115,7 +115,7 @@ const Navbar = () => {
             </Link>
             <div className="profile-dropdown relative" ref={dropdownRef}>
               <div className="flex items-center gap-3 cursor-pointer" onClick={handlerDropDown}>
-                <div className="thumb w-8 h-8 bg-gray-800">
+                <div className="thumb aspect-square w-8 h-8 bg-gray-800">
                   <img src={`${BASE_URL}/${profilePhoto}`} alt={user.displayName} />
                 </div>
                 <div className="text-sm hidden lg:block">{user.displayName}</div>
