@@ -73,14 +73,14 @@ const GptSearchBar = ({ searchOpacity }) => {
   return (
     <>
       <div className="px-4 md:px-12 py-3 text-white max-w-4xl text-center m-auto mt-12">
-        <h1 className="text-5xl mb-3">Let AI be your Movie Guru!</h1>
-        <p className="text-gray-400">Discover Family-Friendly Flicks for a Perfect Movie Night</p>
+        <h1 className="text-3xl md:text-5xl mb-3 font-bold">Let AI be your Movie Guru!</h1>
+        <p className="text-gray-400 text-sm md:text-lg">Discover Family-Friendly Flicks for a Perfect Movie Night</p>
       </div>
       <div className="px-4 md:px-12 py-3 sticky top-[68px] z-[99999]" style={{ background: `rgba(20, 20, 20, ${searchOpacity})` }}>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">
-              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-6 hidden md:block'>search</span>
+              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>search</span>
               <input
                 type="text"
                 placeholder="Search Movies, Show and more"
@@ -89,7 +89,7 @@ const GptSearchBar = ({ searchOpacity }) => {
                 value={searchPrompt}
               />
 
-              {searchPrompt && <span className='icon-fill text-[28px] mt-1 md:text-[36px] absolute right-4 top-3 md:top-6 cursor-pointer' onClick={handleClearPrompt}>close</span>}
+              {searchPrompt && <span className='icon-fill text-[28px] mt-0 md:text-[36px] absolute right-4 top-4 md:top-5 cursor-pointer' onClick={handleClearPrompt}>close</span>}
             </div>
             <button
               className={`py-4 md:py-6 w-24 px-2 md:px-5 flex items-center justify-center bg-red-primary rounded text-white disabled:bg-red-800`}

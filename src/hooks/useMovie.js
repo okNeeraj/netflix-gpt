@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
 import { setMovie } from '../stores/moviesSlice';
 
