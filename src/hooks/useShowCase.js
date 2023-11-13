@@ -29,7 +29,7 @@ const useShowCase = (endpoint, showCaseState, genreId, originalLanguage, showInd
   // const movieData = useSelector((store) => store.showCase[showCaseState]);
   const fetchData = async () => {
     try {
-      let apiUrl = `${TMDB_API_URL}/${endpoint}?language=en-US&page=1`;
+      let apiUrl = `${TMDB_API_URL}/discover/movie?language=en-US&page=1`;
 
       if (genreId) {
         apiUrl += `&with_genres=${genreId}`;

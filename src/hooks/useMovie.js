@@ -26,7 +26,7 @@ const useMovie = (endpoint, movieState, genreId, originalLanguage) => {
   const dispatch = useDispatch();
   const fetchData = async () => {
     try {
-      let apiUrl = `${TMDB_API_URL}/movie/${endpoint}?language=en-US&page=1&adult=true`;
+      let apiUrl = `${TMDB_API_URL}/discover/movie?language=en-US&page=1&adult=true`;
 
       if (genreId) {
         apiUrl += `&with_genres=${genreId}`;
