@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
 import { setPlayer } from '../stores/playerSlice';

@@ -1,18 +1,27 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import usePlayer from "../hooks/usePlayer";
 import { TMDB_CDN_URL } from "../services/tmdb";
 import { PAGE } from "../router/routes";
+import { useEffect } from "react";
+import { setPlayer } from "../stores/playerSlice";
+import Spinner from '../components/Spinner';
 
 const Watch = () => {
   const { contentId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    return () => {
+      dispatch(setPlayer({ playerState: 'playing', playerData: null }))
+    }
+  }, [])
 
   usePlayer('movie', 'playing', contentId);
 
   const videoInfo = useSelector((store) => store?.player?.playing?.info)
   const videos = useSelector((store) => store?.player?.playing?.videos)
 
-  if (!videoInfo && !videos) return null;
+  if (!videoInfo && !videos) return <Spinner />;
   const { original_title, backdrop_path } = videoInfo;
 
   if (videos?.results?.length <= 0) return <VideoNotFound data={{ original_title, backdrop_path }} />;
