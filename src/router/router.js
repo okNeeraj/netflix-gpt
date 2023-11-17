@@ -15,6 +15,7 @@ import Spinner from "../components/Spinner";
 // import TvShows from "../pages/TvShows";
 // import Movies from "../pages/Movies";
 import Latest from "../pages/Latest";
+import NotFoundPage from "../components/NotFoundPage";
 // import Watch from "../pages/Watch";
 // import About from "../pages/About";
 
@@ -105,7 +106,8 @@ const router = createBrowserRouter([
         path: '/about',
         element: <RouteType type="global"><About /></RouteType>
       }
-    ]
+    ],
+    errorElement: <NotFoundPage />
   }
 ]);
 
