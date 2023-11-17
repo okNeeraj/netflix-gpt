@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/netflix-gpt/static/css/main.3a3b8bec.css",
-    "main.js": "/netflix-gpt/static/js/main.3d676668.js",
+    "main.css": "/netflix-gpt/static/css/main.e35015b7.css",
+    "main.js": "/netflix-gpt/static/js/main.2a222525.js",
     "static/css/945.baa28464.chunk.css": "/netflix-gpt/static/css/945.baa28464.chunk.css",
     "static/js/945.4928754f.chunk.js": "/netflix-gpt/static/js/945.4928754f.chunk.js",
     "static/js/266.50579e0a.chunk.js": "/netflix-gpt/static/js/266.50579e0a.chunk.js",
@@ -15,11 +15,11 @@
     "static/js/870.59a7795a.chunk.js": "/netflix-gpt/static/js/870.59a7795a.chunk.js",
     "static/js/964.d23b4f6d.chunk.js": "/netflix-gpt/static/js/964.d23b4f6d.chunk.js",
     "static/js/787.8e11e584.chunk.js": "/netflix-gpt/static/js/787.8e11e584.chunk.js",
-    "static/js/549.c853e248.chunk.js": "/netflix-gpt/static/js/549.c853e248.chunk.js",
-    "static/js/859.fade9dc8.chunk.js": "/netflix-gpt/static/js/859.fade9dc8.chunk.js",
+    "static/js/549.9fd5f788.chunk.js": "/netflix-gpt/static/js/549.9fd5f788.chunk.js",
+    "static/js/859.7032b736.chunk.js": "/netflix-gpt/static/js/859.7032b736.chunk.js",
     "index.html": "/netflix-gpt/index.html",
-    "main.3a3b8bec.css.map": "/netflix-gpt/static/css/main.3a3b8bec.css.map",
-    "main.3d676668.js.map": "/netflix-gpt/static/js/main.3d676668.js.map",
+    "main.e35015b7.css.map": "/netflix-gpt/static/css/main.e35015b7.css.map",
+    "main.2a222525.js.map": "/netflix-gpt/static/js/main.2a222525.js.map",
     "945.baa28464.chunk.css.map": "/netflix-gpt/static/css/945.baa28464.chunk.css.map",
     "945.4928754f.chunk.js.map": "/netflix-gpt/static/js/945.4928754f.chunk.js.map",
     "266.50579e0a.chunk.js.map": "/netflix-gpt/static/js/266.50579e0a.chunk.js.map",
@@ -33,11 +33,11 @@
     "870.59a7795a.chunk.js.map": "/netflix-gpt/static/js/870.59a7795a.chunk.js.map",
     "964.d23b4f6d.chunk.js.map": "/netflix-gpt/static/js/964.d23b4f6d.chunk.js.map",
     "787.8e11e584.chunk.js.map": "/netflix-gpt/static/js/787.8e11e584.chunk.js.map",
-    "549.c853e248.chunk.js.map": "/netflix-gpt/static/js/549.c853e248.chunk.js.map",
-    "859.fade9dc8.chunk.js.map": "/netflix-gpt/static/js/859.fade9dc8.chunk.js.map"
+    "549.9fd5f788.chunk.js.map": "/netflix-gpt/static/js/549.9fd5f788.chunk.js.map",
+    "859.7032b736.chunk.js.map": "/netflix-gpt/static/js/859.7032b736.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a3b8bec.css",
-    "static/js/main.3d676668.js"
+    "static/css/main.e35015b7.css",
+    "static/js/main.2a222525.js"
   ]
 }
