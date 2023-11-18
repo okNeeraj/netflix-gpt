@@ -1,7 +1,7 @@
 {
   "name": "netflix-gpt",
   "version": "0.1.0",
-  "homepage": "https://okneeraj.github.io",
+  "homepage": "https://okneeraj.github.io/netflix-gpt",
   "private": true,
   "dependencies": {
     "@loadable/component": "^5.15.3",

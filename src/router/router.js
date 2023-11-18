@@ -1,4 +1,4 @@
-import { createBrowserRouter, useNavigate } from "react-router-dom";
+import { createHashRouter, createBrowserRouter, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import loadable from '@loadable/component'
@@ -53,7 +53,7 @@ const RouteType = ({ children, type }) => {
   return <>{children}</>;
 };
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
