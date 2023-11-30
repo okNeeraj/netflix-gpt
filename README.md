@@ -76,41 +76,41 @@ npm start
 
 ## Screen Shot
 
-Live Demo : [Live Demo](https://8ttribute.com "Live Demo")
+Live Demo : [Live Demo](https://okneeraj.github.io/netflix-gpt "Live Demo")
 
 ## Screen Shot
 
 - Landing Page
 
-  ![Landing Page](https://netflixgpt-aaf25.web.app/screenshot/01-Landing.png)
+  ![Landing Page](https://okneeraj.github.io/netflix-gpt/screenshot/01-Landing.png)
 
 - Signin Page
 
-  ![Signin Page](https://netflixgpt-aaf25.web.app/screenshot/02-Signin.png)
+  ![Signin Page](https://okneeraj.github.io/netflix-gpt/screenshot/02-Signin.png)
 
 - Signup Page
 
-  ![Signup Page](https://netflixgpt-aaf25.web.app/screenshot/03-Signup.png)
+  ![Signup Page](https://okneeraj.github.io/netflix-gpt/screenshot/03-Signup.png)
 
 - Browse Page
 
-  ![Browse Page](https://netflixgpt-aaf25.web.app/screenshot/04-Browse.png)
+  ![Browse Page](https://okneeraj.github.io/netflix-gpt/screenshot/04-Browse.png)
 
 - Movie List
 
-  ![Movie List](https://netflixgpt-aaf25.web.app/screenshot/05-Movie-List.png)
+  ![Movie List](https://okneeraj.github.io/netflix-gpt/screenshot/05-Movie-List.png)
 
 - Shimmer Loading
 
-  ![Shimmer Loading](https://netflixgpt-aaf25.web.app/screenshot/06-Shimmer-loading.png)
+  ![Shimmer Loading](https://okneeraj.github.io/netflix-gpt/screenshot/06-Shimmer-loading.png)
 
 - Search Page
 
-  ![Search Page](https://netflixgpt-aaf25.web.app/screenshot/07-Search.png)
+  ![Search Page](https://okneeraj.github.io/netflix-gpt/screenshot/07-Search.png)
 
 - Watch Now Page
 
-  ![Watch Now Page](https://netflixgpt-aaf25.web.app/screenshot/08-Watch.png)
+  ![Watch Now Page](https://okneeraj.github.io/netflix-gpt/screenshot/08-Watch.png)
 
 # 💖 Support This Project
 
