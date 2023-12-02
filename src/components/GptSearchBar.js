@@ -3,6 +3,7 @@ import openai from "../services/openai";
 import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
 import { useDispatch, useSelector } from "react-redux";
 import { setGptSearch } from "../stores/searchSlice";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const GptSearchBar = ({ searchOpacity }) => {
   const userEmail = useSelector((store) => store?.user?.email);
@@ -80,7 +81,9 @@ const GptSearchBar = ({ searchOpacity }) => {
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">
-              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>search</span>
+              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>
+                <SearchOutlinedIcon style={{ fontSize: '32px' }} />
+              </span>
               <input
                 type="text"
                 placeholder="Search Movies, Show and more"
@@ -101,7 +104,9 @@ const GptSearchBar = ({ searchOpacity }) => {
                   <div className="w-5 h-5 border-t m border-gray-300 border-solid rounded-full animate-spin"></div>
                   :
                   <>
-                    <span className='icon-fill text-[22px] md:text-[32px] md:hidden'>search</span>
+                    <span className='icon-fill text-[22px] md:text-[32px] md:hidden'>
+                      <SearchOutlinedIcon style={{ fontSize: '28px' }} />
+                    </span>
                     <span className='hidden md:inline-block'>Search</span>
                   </>
               }

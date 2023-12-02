@@ -6,6 +6,7 @@ import { auth } from '../services/firebase';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../stores/userSlice';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const Navbar = () => {
   const [showNavList, setShowNavList] = useState(true);
@@ -110,7 +111,8 @@ const Navbar = () => {
           </div>
           <div className="gap-6 ml-auto flex items-center">
             <Link to={PAGE.SEARCH} className='hover:text-gray-400 flex gap-2 items-center'>
-              <span className='icon-line text-[24px]'>search</span>
+              {/* <span className='icon-line text-[24px]'>search</span> */}
+              <SearchOutlinedIcon style={{ fontSize: '28px' }} />
               <span className="hidden lg:block">Search</span>
             </Link>
             <div className="profile-dropdown relative" ref={dropdownRef}>
