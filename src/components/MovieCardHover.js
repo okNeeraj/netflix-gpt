@@ -5,6 +5,12 @@ import { NO_POSTER } from "../utils/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import getGenresName from "../utils/getGenresName";
 import GenreList from "./GenreList";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import AddIcon from '@mui/icons-material/Add';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
 
 const MovieCardHover = ({ data, centerPosition, hovered }) => {
   const { id, title, poster_path, backdrop_path, release_date, genre_ids, vote_average } = data;
@@ -50,17 +56,21 @@ const MovieCardHover = ({ data, centerPosition, hovered }) => {
         <div className="detail p-5">
           <div className='actions flex items-center gap-3'>
             <Link to={`${PAGE.WATCH}/${id}`} className='w-10 h-10 flex items-center bg-white hover:bg-gray-200 text-black rounded-full justify-center'>
-              <span className='icon-fill text-[36px]'>play_arrow</span>
+              {/* <span className='icon-fill text-[36px]'>play_arrow</span> */}
+              <PlayArrowIcon style={{ fontSize: '24px' }} />
             </Link>
             <button className='w-10 h-10 flex items-center bg-[#262626] text-white rounded-full justify-center border-2 border-solid border-gray-500 hover:border-gray-50'>
-              <span className='icon-line text-[24px]'>add</span>
+              {/* <span className='icon-line text-[24px]'>add</span> */}
+              <AddIcon style={{ fontSize: '24px' }} />
             </button>
             <button className='w-10 h-10 flex items-center bg-[#262626] text-white rounded-full justify-center border-2 border-solid border-gray-500 hover:border-gray-50'>
-              <span className='icon-line text-[20px]'>thumb_up</span>
+              {/* <span className='icon-line text-[20px]'>thumb_up</span> */}
+              <ThumbUpOffAltIcon style={{ fontSize: '24px' }} />
             </button>
             <div className='ml-auto'>
               <button className='w-10 h-10 flex items-center bg-[#262626] text-white rounded-full justify-center border border-solid border-gray-500 hover:border-gray-50'>
-                <span className='icon-line text-[30px]'>expand_more</span>
+                {/* <span className='icon-line text-[30px]'>expand_more</span> */}
+                <ExpandMoreIcon style={{ fontSize: '24px' }} />
               </button>
             </div>
           </div>

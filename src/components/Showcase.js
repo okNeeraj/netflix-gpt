@@ -58,7 +58,7 @@ const Showcase = ({ data }) => {
                   onClick={toggleMute}>
                   {/* <span className='icon-line text-[18px]'>{isMuted ? 'volume_off' : 'volume_up'}</span> */}
                   {
-                    isMuted ? <VolumeMuteIcon style={{ fontSize: '28px' }} /> : <VolumeOffIcon style={{ fontSize: '28px' }} />
+                    isMuted ? <VolumeOffIcon style={{ fontSize: '28px' }} /> : <VolumeMuteIcon style={{ fontSize: '28px' }} />
                   }
                 </button>
               </div>
