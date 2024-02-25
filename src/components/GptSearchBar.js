@@ -4,6 +4,7 @@ import { TMDB_API_URL, TMDB_OPTIONS } from "../services/tmdb";
 import { useDispatch, useSelector } from "react-redux";
 import { setGptSearch } from "../stores/searchSlice";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 
 const GptSearchBar = ({ searchOpacity }) => {
   const userEmail = useSelector((store) => store?.user?.email);
@@ -81,7 +82,7 @@ const GptSearchBar = ({ searchOpacity }) => {
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex gap-1">
             <div className="text-white relative w-full">
-              <span className='icon-fill text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-3 md:top-5 hidden md:block'>
+              <span className='icon-fill text-gray-400 text-[22px] md:mt-0 md:text-[36px] absolute left-4 top-[16px] md:top-5 hidden md:block'>
                 <SearchOutlinedIcon style={{ fontSize: '32px' }} />
               </span>
               <input
@@ -92,7 +93,9 @@ const GptSearchBar = ({ searchOpacity }) => {
                 value={searchPrompt}
               />
 
-              {searchPrompt && <span className='icon-fill text-[28px] mt-0 md:text-[36px] absolute right-4 top-4 md:top-5 cursor-pointer' onClick={handleClearPrompt}>close</span>}
+              {searchPrompt && <span className='icon-fill text-[28px] mt-0 md:text-[36px] absolute right-4 top-4 md:top-5 cursor-pointer' onClick={handleClearPrompt}>
+                <CloseIcon style={{ fontSize: '32px' }} />
+              </span>}
             </div>
             <button
               className={`py-4 md:py-6 w-24 px-2 md:px-5 flex items-center justify-center bg-red-primary rounded text-white disabled:bg-red-800`}
