@@ -33,7 +33,7 @@ const GptSearchBar = ({ searchOpacity }) => {
 
   const handleSearch = async () => {
     setLoadingBtn(true);
-    if (user === 'gpt@gmail.com') {
+    if (user === 'gpt4@gmail.com') {
       try {
         const prompt = `
         Act as a movie recommendation system and suggest some movies for the query : ${searchPrompt}.
